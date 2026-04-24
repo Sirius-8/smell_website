@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essencia — Global Navbar & Favoriler</title>
+    <link rel="stylesheet" href="favorite.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="main-navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#">ESSENCIA</a>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#">ANASAYFA</a></li>
+                
+                <li class="dropdown">
+                    <span class="dropdown-trigger">ATÖLYE</span>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">KADIN</a></li>
+                        <li><a href="#">ERKEK</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <button type="button" class="nav-btn-link" id="triggerFav">
+                        FAVORİLERİM
+                    </button>
+                </li>
+                <li><a href="iletisim.html">İLETİŞİM</a></li>
+                
+                <li><a href="#">SEPETİM</a></li>
+                
+                <li><a href="#" class="auth-btn">GİRİŞ YAP / KAYDOL</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="fullScreenFav" class="fav-full-screen">
+        <button class="close-btn" id="closeFavBtn">&times;</button>
+        
+        <div class="fav-container">
+            <div class="fav-header-area">
+                <h2>FAVORİLERİM</h2>
+            </div>
+
+            <div class="fav-grid">
+                <div class="fav-item-card is-fem">
+                    <div class="fav-info">
+                        <h4>MIDNIGHT ROSE</h4>
+                        <p>KADIN KOLEKSİYONU · %50 GÜL, %50 AMBER</p>
+                    </div>
+                </div>
+
+                <div class="fav-item-card is-masc">
+                    <div class="fav-info">
+                        <h4>DEEP OCEAN</h4>
+                        <p>ERKEK KOLEKSİYONU · %70 DENİZ, %30 ODUNSU</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="checkout-all-btn">HEPSİNİ KOLEKSİYONA EKLE</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const openBtn = document.getElementById('triggerFav');
+            const closeBtn = document.getElementById('closeFavBtn');
+            const favOverlay = document.getElementById('fullScreenFav');
+
+            if (openBtn) {
+                openBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    favOverlay.classList.add('is-active');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    favOverlay.classList.remove('is-active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === "Escape" && favOverlay.classList.contains('is-active')) {
+                    favOverlay.classList.remove('is-active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

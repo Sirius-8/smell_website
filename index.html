@@ -13,27 +13,27 @@
 <nav class="site-nav">
   <div class="nav-brand">
     <a href="#" class="nav-logo">E<span>SS</span>ENCIA</a>
-    <div class="nav-slogan">Sanal Parfüm Atölyesi</div>
+    <div class="nav-slogan">Kendini Keşfet</div>
   </div>
 
   <ul class="nav-links">
-    <li><a href="#">Anasayfa</a></li>
+    <li><a href="index.html">Anasayfa</a></li>
 
     <li class="nav-dropdown">
       <a href="#" class="dropdown-toggle">Atölye ▾</a>
       <ul class="dropdown-menu">
-        <li><a href="#">Kadın</a></li>
-        <li><a href="#">Erkek</a></li>
+        <li><a href="kadin.html">Kadın</a></li>
+        <li><a href="erkekparfum.html">Erkek</a></li>
       </ul>
     </li>
 
-    <li><a href="#">Favorilerim</a></li>
+    <li><a href="#" id="triggerFav">Favorilerim</a></li>
   </ul>
 
   <div class="nav-right">
-    <button class="nav-btn">Giriş Yap</button>
+    <button class="nav-btn" onclick="window.location.href='girisekranı.html'">Giriş Yap</button>
 
-    <button class="nav-cart" aria-label="Sepete Ekle">
+    <button class="nav-cart" aria-label="Sepete Ekle" onclick="window.location.href='sepet.html'">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="9" cy="21" r="1"/>
@@ -55,13 +55,11 @@
         </h1>
 
         <p class="hero-desc">
-        Her insan eşsizdir — tıpkı kokunun dili gibi. Essencia'da,
-        binlerce esans notasını keşfederek yalnızca sana özgü parfümünü
-        yaratıyorsun. Bu bir ürün değil; bu senin hikâyen.
+        Koku, kişisel bir imzadır. Essencia'da hazır formüller sunmak yerine, geniş içerik arşivimizden kendi notalarınızı seçerek tamamen size özel o parfümü tasarlamanızı sağlıyoruz.
         </p>
 
         <div class="hero-ctas">
-        <button class="btn-primary">Atölyeye Gir</button>
+        <button class="btn-primary">Atölyeye Git</button>
         </div>
     </div>
 
@@ -106,19 +104,14 @@
       </div>
       <div class="about-right fade-up delay-1">
       <p class="about-text about-text-lead">
-        Essencia, kokuyu bir <strong>kimlik ifadesi</strong> olarak gören insanlar
-        için kuruldu. Parfüm endüstrisi onlarca yıldır hazır kalıplar sundu —
-        biz ise sana beyaz bir kağıt ve kalem verdik.
+        Essencia, kokuyu kişisel bir ifade biçimi olarak görenler için tasarlandı. Yıllardır süregelen standartlaşmış formüllerin aksine, burada kontrol tamamen sizde.
       </p>
       <p class="about-text">
-        Sanal atölyemizde <strong>Fransa'nın en prestijli esans arşivlerinden</strong>
-        ilham alınan notalar seni bekliyor. Tepe, kalp ve baz notaları
-        üç katmanda harmanlayarak — binlerce kombinasyon arasından —
-        yalnızca sana ait bir parfüm yaratabilirsin.
+        Çevrimiçi platformumuzda, Fransa'nın seçkin esans arşivlerinden ilham alan içeriklerle kendi formülünüzü oluşturursunuz. Tepe, kalp ve dip notaları kendi zevkinize göre harmanlayarak, binlerce kombinasyon arasından sadece size ait olan o kokuyu tasarlayabilirsiniz.
       </p>
       <div class="stats-row">
         <div class="stat-card">
-          <div class="stat-num">200+</div>
+          <div class="stat-num">15+</div>
           <div class="stat-label">Esans Notu</div>
         </div>
         <div class="stat-card">
@@ -159,7 +152,7 @@
           Kendi ismini ve hikâyeni etikete ekle. Essencia etiketini
           giydirdiğin özel şişen kapına gelir.
         </p>
-        <a href="#" class="step-link">Sipariş Ver &rarr;</a>
+        <a href="#" class="step-link">Atölyeye Git&rarr;</a>
       </div>
     </div>
   </section>
@@ -185,17 +178,15 @@
         </p>
       </div>
       <div class="promise-item">
-        <div class="promise-item-title">Uzman Parfümörler</div>
+        <div class="promise-item-title">Tasarımda Bütünlük</div>
         <p class="promise-item-text">
-          Harmanlama algoritmamız, deneyimli nez ustalarının bilgisiyle
-          eğitildi. Her kombinasyon estetik açıdan tutarlı.
+          Seçkimizdeki esanslar, parfüm yapımının temel dengelerine uygun olarak kategorize edilmiştir. Kendi zevkinize göre yapacağınız her eşleşme; tepe, kalp ve dip notalarda birbirini destekleyerek tutarlı ve rafine bir sonuca ulaşır.
         </p>
       </div>
       <div class="promise-item">
-        <div class="promise-item-title">Sürdürülebilir Üretim</div>
+        <div class="promise-item-title">Sorumlu Yaklaşım</div>
         <p class="promise-item-text">
-          Geri dönüştürülebilir ambalaj, karbon nötr teslimat ve yeniden
-          doldurabileceğin şişe tasarımıyla doğayı önceliklendiriyoruz.
+          Essencia'da ambalajlar atılmak için değil, saklanmak için tasarlanır. Yeniden doldurulabilir şişelerimiz ve karbon nötr teslimatımız sayesinde çevreye duyarlı bir kullanım sağlıyoruz.
         </p>
       </div>
     </div>
@@ -205,8 +196,8 @@
   <section class="notes-section">
     <div class="fade-up">
       <div class="section-label hero-like-label" style="justify-content:center">Esans Notaları</div>
-      <h2 class="section-title">200+ not, sonsuz olasılık</h2>
-      <p class="section-sub">Merak ettiğin bir notaya tıkla, hikâyesini öğren.</p>
+      <h2 class="section-title">15+ not, sonsuz olasılık</h2>
+      <p class="section-sub">Notaları Gezin, Atölyede Tarzını Yansıt</p>
     </div>
     <div class="notes-cloud fade-up delay-1">
       <span class="note-pill note-sedir">Sedir Ağacı</span>
@@ -228,15 +219,15 @@
   <section class="cta-section">
     <div class="section-label hero-like-label fade-up" style="justify-content:center">Atölye Seni Bekliyor</div>
     <h2 class="cta-title fade-up delay-1">
-      Senin için biçilmiş<br><em>tek parfüm</em> burada
+      Sana Özel Olan<br><em>tek parfüm</em> burada
     </h2>
     <p class="cta-desc fade-up delay-2">
       Kadın ya da erkek fark etmeksizin — her kişilik bir koku dilidir.
-      Atölyeye gir, kendi sesini bul.
+      Atölyeye gir, kendini keşfet.
     </p>
     <div class="cta-btns fade-up delay-2">
-      <button class="btn-primary">Kadın Atölyesi</button>
-      <button class="btn-outline">Erkek Atölyesi</button>
+      <button class="btn-primary">Kadın Parfümü Atölyesi</button>
+      <button class="btn-outline">Erkek Parfümü Atölyesi</button>
     </div>
   </section>
  
@@ -245,15 +236,36 @@
       <a href="#" class="footer-logo">E<span>SS</span>ENCIA</a>
       <p class="footer-tagline">Kokuların Sanal Atölyesi</p>
     </div>
-    <ul class="footer-links">
-      <li><a href="#">Hakkımızda</a></li>
-      <li><a href="#">Atölye</a></li>
-      <li><a href="#">İletişim</a></li>
-      <li><a href="#">Gizlilik</a></li>
-    </ul>
     <p class="footer-copy">&copy; 2025 Essencia. Tüm hakları saklıdır.</p>
   </footer>
- 
+  <div id="fullScreenFav" class="fav-full-screen">
+    <button class="close-btn" id="closeFavBtn">&times;</button>
+    
+    <div class="fav-container">
+      <div class="fav-header-area">
+        <h2>FAVORİLERİM</h2>
+      </div>
+
+      <div class="fav-grid">
+        <div class="fav-item-card is-fem">
+          <div class="fav-info">
+            <h4>MIDNIGHT ROSE</h4>
+            <p>KADIN KOLEKSİYONU · %50 GÜL, %50 AMBER</p>
+          </div>
+        </div>
+
+        <div class="fav-item-card is-masc">
+          <div class="fav-info">
+            <h4>DEEP OCEAN</h4>
+            <p>ERKEK KOLEKSİYONU · %70 DENİZ, %30 ODUNSU</p>
+          </div>
+        </div>
+      </div>
+
+      <button class="checkout-all-btn">HEPSİNİ KOLEKSİYONA EKLE</button>
+    </div>
+  </div>
+
   <script>
     const observer = new IntersectionObserver(
       (entries) => {
@@ -266,6 +278,33 @@
       { threshold: 0.15 }
     );
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Favoriler Overlay
+    const openBtn = document.getElementById('triggerFav');
+    const closeBtn = document.getElementById('closeFavBtn');
+    const favOverlay = document.getElementById('fullScreenFav');
+
+    if (openBtn) {
+      openBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        favOverlay.classList.add('is-active');
+        document.body.style.overflow = 'hidden';
+      });
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function() {
+        favOverlay.classList.remove('is-active');
+        document.body.style.overflow = 'auto';
+      });
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === "Escape" && favOverlay.classList.contains('is-active')) {
+        favOverlay.classList.remove('is-active');
+        document.body.style.overflow = 'auto';
+      }
+    });
   </script>
  
 </body>
