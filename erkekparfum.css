@@ -161,7 +161,81 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 12px;
-    min-width: 240px;
+    min-width: 180px;
+    flex-shrink: 0;
+    position: relative;
+    width: 220px;
+}
+
+/* Bottle Action Overlay */
+.bottle-action-overlay {
+    opacity: 0;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 20px;
+    transition: opacity 0.3s ease;
+}
+
+.bottle-action-overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.action-fav-btn {
+    background: linear-gradient(to right, #e8f0f8, #d8e4f0);
+    border: 1px solid #c8d8e8;
+    border-radius: 50px;
+    width: 100%;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #1a3060;
+    font-family: 'Jost', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(26,48,96,0.06);
+    transition: all 0.3s ease;
+}
+
+.action-fav-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(26,48,96,0.12);
+}
+
+.action-fav-btn.active i {
+    color: #e63946;
+}
+
+.action-cart-btn {
+    background: linear-gradient(to right, #1a3060, #102040);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    width: 100%;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: 'Jost', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(26,48,96,0.25);
+    transition: all 0.3s ease;
+}
+
+.action-cart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(26,48,96,0.35);
+    background: linear-gradient(to right, #2a4070, #1a3060);
 }
 
 .pct-display {
@@ -308,4 +382,108 @@ footer {
     font-size: 11px;
     color: #ccc;
     letter-spacing: 1px;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 900px) {
+    .masc-hero {
+        grid-template-columns: 1fr;
+        padding: 60px 5%;
+        gap: 40px;
+    }
+
+    .builder-layout {
+        gap: 20px;
+    }
+
+    .bottle-panel {
+        width: 180px;
+        min-width: 140px;
+    }
+
+    .bottle-panel svg {
+        width: 160px !important;
+        height: 210px !important;
+    }
+
+    .action-fav-btn, .action-cart-btn {
+        height: 40px;
+        font-size: 13px;
+        gap: 6px;
+    }
+
+    .bottle-action-overlay {
+        margin-top: 15px;
+        gap: 8px;
+    }
+
+    .builder-section {
+        padding: 60px 4%;
+    }
+
+    .popular-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .masc-hero {
+        padding: 40px 4%;
+        margin-top: 20px;
+    }
+
+    .masc-hero h2 {
+        font-size: 30px;
+    }
+
+    .builder-section {
+        padding: 40px 3%;
+    }
+
+    .builder-layout {
+        gap: 10px;
+    }
+
+    .bottle-panel {
+        width: 130px;
+        min-width: 110px;
+    }
+
+    .bottle-panel svg {
+        width: 120px !important;
+        height: 160px !important;
+    }
+
+    .action-fav-btn, .action-cart-btn {
+        height: 34px;
+        font-size: 11px;
+        gap: 4px;
+    }
+
+    .bottle-action-overlay {
+        margin-top: 10px;
+        gap: 6px;
+    }
+
+    .pct-display {
+        font-size: 22px;
+    }
+
+    .fill-list-text {
+        font-size: 10px;
+        max-width: 120px;
+        min-height: 30px;
+    }
+
+    .essence-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .popular-section {
+        padding: 40px 4%;
+    }
+
+    .popular-grid {
+        grid-template-columns: 1fr;
+    }
 }
