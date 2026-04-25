@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="iletisim.css">
     <link rel="stylesheet" href="erkekparfum.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <script src="favorites.js"></script>
     <script type="importmap">
     {
       "imports": {
@@ -648,24 +649,7 @@
     }
 
     function toggleHeart(btn) {
-      btn.classList.toggle('active');
-      const card = btn.closest('.popular-card');
-      const name = card.querySelector('.p-name').textContent;
-      const notes = card.querySelector('.p-notes').textContent;
-      
-      let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-      
-      if (btn.classList.contains('active')) {
-          if (!favorites.find(f => f.name === name)) {
-              favorites.push({ name, notes });
-              alert(name + ' favorilerinize eklendi!');
-          }
-      } else {
-          favorites = favorites.filter(item => item.name !== name);
-          alert(name + ' favorilerinizden çıkarıldı.');
-      }
-      
-      localStorage.setItem('favorites', JSON.stringify(favorites));
+        // favorites.js içerisindeki window.toggleHeart kullanılıyor
     }
 
     function addToCart(name, price) {

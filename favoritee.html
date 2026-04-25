@@ -64,30 +64,19 @@
 
       <div class="fav-grid-wrapper">
         <div class="fav-grid" id="favGrid">
-          <div class="fav-item-card female-card">
-            <div class="fav-info">
-              <h4>Rose Velvet</h4>
-              <p>Gül · Şakayık · Misk</p>
-            </div>
-          </div>
-
-          <div class="fav-item-card male-card">
-            <div class="fav-info">
-              <h4>Dark Oud</h4>
-              <p>Oud · Duman · Amber</p>
-            </div>
-          </div>
+          <!-- Dinamik olarak dolacak -->
         </div>
 
         <!-- DAHA FAZLA GÖR OVERLAY -->
         <div class="fav-more-overlay" id="favMoreOverlay">
-          <button class="more-btn" type="button">Daha Fazla Gör</button>
+          <button class="more-btn" type="button" onclick="window.location.href='index.html'">Keşfetmeye Devam Et</button>
         </div>
       </div>
     </div>
   </div>
 
   <!-- JS EN ALTTA -->
+  <script src="favorites.js"></script>
   <script>
     const closeFavBtn = document.getElementById("closeFavBtn");
     const favScreen = document.getElementById("favScreen");
