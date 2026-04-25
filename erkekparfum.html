@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essencia — Erkek Koleksiyonu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="iletisim.css">
+    <link rel="stylesheet" href="erkekparfum.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.158.0/examples/jsm/"
+      }
+    }
+    </script>
+</head>
+
+<body>
+
+  <nav class="site-nav">
+    <div class="nav-brand">
+      <a href="index.html" class="nav-logo">E<span>SS</span>ENCIA</a>
+      <div class="nav-slogan">Kendini Keşfet</div>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Anasayfa</a></li>
+
+      <li class="nav-dropdown">
+        <a href="#" class="dropdown-toggle">Atölye ▾</a>
+        <ul class="dropdown-menu">
+          <li><a href="kadin.html">Kadın</a></li>
+          <li><a href="erkekparfum.html">Erkek</a></li>
+        </ul>
+      </li>
+
+      <li><a href="#" id="triggerFav">Favorilerim</a></li>
+      <li><a href="#" onclick="toggleSidebar(); return false;">İletişim</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <a href="girisekranı.html" class="nav-btn" style="text-decoration: none;">Kayıt Ol</a>
+      <button class="nav-cart" aria-label="Sepete Ekle" onclick="window.location.href='sepet.html'">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"/>
+          <circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+        <span class="nav-cart-label">Sepete Ekle</span>
+      </button>
+    </div>
+  </nav>
+
+    <div id="page-male" class="page active">
+
+        <section class="masc-hero">
+            <div>
+                <div class="section-label" style="color:#5080a0;">Erkek Koleksiyonu</div>
+                <h2>Derin,<br>Güçlü, <em>Özgün</em></h2>
+                <p>Gecenin mavisi, toprağın odunsu kokusu ve baharatın sıcaklığıyla yoğrulan maskülen bir his. Sizin
+                    için, sizin tarafınızdan tasarlandı.</p>
+
+            </div>
+            <div class="masc-bottle-showcase" style="background: linear-gradient(160deg, #d0e4f7 0%, #c0d8f0 50%, #b8d0ec 100%); border-radius: 24px; padding: 24px; display: flex; justify-content: center; align-items: center; box-shadow: 0 8px 32px rgba(13,26,78,0.12);">
+                <canvas id="hero-bottle-canvas"></canvas>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="builder-section masc-builder">
+            <div class="section-label" style="text-align:center;">Atölye</div>
+            <h2>Kendi Karışımını Yarat</h2>
+            <p class="sub">Esans oranlarını girerek şişeni doldurmaya başla — toplam %100 olduğunda şişen hazır!</p>
+
+            <div class="builder-layout">
+                <div>
+                    <div class="essence-grid" id="masc-essence-grid">
+
+                        <div class="essence-row masc-essence-row">
+                            <div class="essence-dot" style="background:#0d1a2e;"></div>
+                            <span class="essence-name">Sedir Ağacı</span>
+                            <input class="essence-input masc-essence-input" type="number" min="0" max="100" value="0"
+                                data-color="#0d1a2e" data-label="Sedir Ağacı" oninput="updateBottle('masc')">
+                            <span class="essence-pct">%</span>
+                        </div>
+
+                        <div class="essence-row masc-essence-row">
+                            <div class="essence-dot" style="background:#3060a0;"></div>
+                            <span class="essence-name">Vetiver</span>
+                            <input class="essence-input masc-essence-input" type="number" min="0" max="100" value="0"
+                                data-color="#3060a0" data-label="Vetiver" oninput="updateBottle('masc')">
+                            <span class="essence-pct">%</span>
+                        </div>
+
+                        <div class="essence-row masc-essence-row">
+                            <div class="essence-dot" style="background:#e0a060;"></div>
+                            <span class="essence-name">Amber</span>
+                            <input class="essence-input masc-essence-input" type="number" min="0" max="100" value="0"
+                                data-color="#e0a060" data-label="Amber" oninput="updateBottle('masc')">
+                            <span class="essence-pct">%</span>
+                        </div>
+
+                        <div class="essence-row masc-essence-row">
+                            <div class="essence-dot" style="background:#604030;"></div>
+                            <span class="essence-name">Hardal</span>
+                            <input class="essence-input masc-essence-input" type="number" min="0" max="100" value="0"
+                                data-color="#604030" data-label="Hardal" oninput="updateBottle('masc')">
+                            <span class="essence-pct">%</span>
+                        </div>
+
+                        <div class="essence-row masc-essence-row">
+                            <div class="essence-dot" style="background:#c8e888;"></div>
+                            <span class="essence-name">Bergamot</span>
+                            <input class="essence-input masc-essence-input" type="number" min="0" max="100" value="0"
+                                data-color="#c8e888" data-label="Bergamot" oninput="updateBottle('masc')">
+                            <span class="essence-pct">%</span>
+                        </div>
+
+                        <div class="essence-row masc-essence-row">
+                            <div class="essence-dot" style="background:#303030;"></div>
+                            <span class="essence-name">Siyah Biber</span>
+                            <input class="essence-input masc-essence-input" type="number" min="0" max="100" value="0"
+                                data-color="#303030" data-label="Siyah Biber" oninput="updateBottle('masc')">
+                            <span class="essence-pct">%</span>
+                        </div>
+
+                        <div class="essence-row masc-essence-row">
+                            <div class="essence-dot" style="background:#a0a0a0;"></div>
+                            <span class="essence-name">Misk</span>
+                            <input class="essence-input masc-essence-input" type="number" min="0" max="100" value="0"
+                                data-color="#a0a0a0" data-label="Misk" oninput="updateBottle('masc')">
+                            <span class="essence-pct">%</span>
+                        </div>
+
+                        <div class="essence-row masc-essence-row">
+                            <div class="essence-dot" style="background:#e0c898;"></div>
+                            <span class="essence-name">Sandal Ağacı</span>
+                            <input class="essence-input masc-essence-input" type="number" min="0" max="100" value="0"
+                                data-color="#e0c898" data-label="Sandal Ağacı" oninput="updateBottle('masc')">
+                            <span class="essence-pct">%</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="bottle-panel">
+                    <svg id="masc-bottle" width="220" height="300" viewBox="0 0 220 300" style="overflow:visible; filter: drop-shadow(0px 18px 36px rgba(13,26,46,0.35)) drop-shadow(0px 4px 12px rgba(0,0,0,0.2));">
+                        <defs>
+                            <clipPath id="masc-star-clip">
+                                <path d="M110 28 L133 95 H204 L148 136 L170 202 L110 162 L50 202 L72 136 L16 95 H87 Z"/>
+                            </clipPath>
+                            <linearGradient id="masc-glass-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="rgba(255,255,255,0.50)"/>
+                                <stop offset="30%" stop-color="rgba(160,200,240,0.10)"/>
+                                <stop offset="70%" stop-color="rgba(30,80,160,0.08)"/>
+                                <stop offset="100%" stop-color="rgba(255,255,255,0.28)"/>
+                            </linearGradient>
+                            <linearGradient id="masc-glass-edge" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="rgba(255,255,255,0.65)"/>
+                                <stop offset="15%" stop-color="rgba(200,230,255,0.12)"/>
+                                <stop offset="85%" stop-color="rgba(30,80,150,0.05)"/>
+                                <stop offset="100%" stop-color="rgba(255,255,255,0.40)"/>
+                            </linearGradient>
+                            <radialGradient id="masc-bottle-bg" cx="50%" cy="60%" r="55%">
+                                <stop offset="0%" stop-color="rgba(168,196,232,0.22)"/>
+                                <stop offset="100%" stop-color="rgba(13,26,78,0.06)"/>
+                            </radialGradient>
+                        </defs>
+
+                        <!-- Derin gölge -->
+                        <path d="M110 28 L133 95 H204 L148 136 L170 202 L110 162 L50 202 L72 136 L16 95 H87 Z"
+                              fill="rgba(5,15,40,0.22)" transform="translate(5,6)" style="filter:blur(6px)"/>
+
+                        <!-- Esans dolum katmanları -->
+                        <g id="masc-layers" clip-path="url(#masc-star-clip)"></g>
+
+                        <!-- Cam arka dolgu -->
+                        <path d="M110 28 L133 95 H204 L148 136 L170 202 L110 162 L50 202 L72 136 L16 95 H87 Z"
+                              fill="url(#masc-bottle-bg)"/>
+
+                        <!-- Cam kenar parlaklığı -->
+                        <path d="M110 28 L133 95 H204 L148 136 L170 202 L110 162 L50 202 L72 136 L16 95 H87 Z"
+                              fill="url(#masc-glass-edge)" opacity="0.55"/>
+
+                        <!-- Ana cam kaplama -->
+                        <path d="M110 28 L133 95 H204 L148 136 L170 202 L110 162 L50 202 L72 136 L16 95 H87 Z"
+                              fill="url(#masc-glass-grad)" opacity="0.65"/>
+
+                        <!-- Dış cam kenar -->
+                        <path d="M110 28 L133 95 H204 L148 136 L170 202 L110 162 L50 202 L72 136 L16 95 H87 Z"
+                              fill="none" stroke="rgba(100,160,220,0.55)" stroke-width="1.5"/>
+
+                        <!-- İç parlak kenar -->
+                        <path d="M110 28 L133 95 H204 L148 136 L170 202 L110 162 L50 202 L72 136 L16 95 H87 Z"
+                              fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="0.5" transform="translate(0.5,0.5)"/>
+
+                        <!-- Sol parlama şeridi -->
+                        <rect x="34" y="80" width="18" height="100" rx="9"
+                              fill="rgba(255,255,255,0.20)" transform="rotate(-15,43,130)"
+                              clip-path="url(#masc-star-clip)"/>
+
+                        <!-- Sağ küçük parlama -->
+                        <rect x="160" y="95" width="8" height="55" rx="4"
+                              fill="rgba(255,255,255,0.13)" transform="rotate(10,164,122)"
+                              clip-path="url(#masc-star-clip)"/>
+
+                        <!-- Üst köşe parlaması -->
+                        <ellipse cx="148" cy="68" rx="14" ry="8"
+                                 fill="rgba(255,255,255,0.26)" transform="rotate(-20,148,68)"
+                                 clip-path="url(#masc-star-clip)"/>
+
+                        <!-- Marka yazısı -->
+                        <text x="110" y="112" text-anchor="middle"
+                              font-family="'Cormorant Garamond',Georgia,serif" font-size="13"
+                              fill="rgba(26,48,96,0.85)" font-weight="500" letter-spacing="2">ESSENCIA</text>
+                        <text x="110" y="128" text-anchor="middle"
+                              font-family="'Jost',Arial,sans-serif" font-size="7"
+                              fill="rgba(26,48,96,0.60)" letter-spacing="3" font-weight="300">EAU DE PARFUM</text>
+                        <text x="110" y="142" text-anchor="middle"
+                              font-family="'Jost',Arial,sans-serif" font-size="6"
+                              fill="rgba(26,48,96,0.48)" letter-spacing="1">50 ml e</text>
+                    </svg>
+
+                    <div class="pct-display masc-pct-display" id="masc-pct">0%</div>
+                    <div class="warning-text" id="masc-warn"></div>
+                    <div class="fill-list-text" id="masc-fill-text">Esansları girerek başla...</div>
+                    <div class="progress-bar-track" style="width:140px;">
+                        <div class="progress-bar-fill masc-progress" id="masc-bar" style="width:0%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="popular-section">
+            <div class="section-label">Önerilen</div>
+            <h2 style="font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;margin-bottom:8px;">Erkek
+                Kokuları</h2>
+            <div class="popular-grid">
+                <div class="popular-card">
+                    <canvas id="pop1-canvas"></canvas>
+                    <div class="p-name">Noir Wood</div>
+                    <div class="p-notes">Sedir %40 · Amber %35 · Misk %25</div>
+                    <span class="p-badge badge-masc">En Çok Satan</span>
+                </div>
+                <div class="popular-card">
+                    <canvas id="pop2-canvas"></canvas>
+                    <div class="p-name">Spicy Amber</div>
+                    <div class="p-notes">Amber %50 · Biber %30 · Vetiver %20</div>
+                    <span class="p-badge badge-masc">Yeni</span>
+                </div>
+                <div class="popular-card">
+                    <canvas id="pop3-canvas"></canvas>
+                    <div class="p-name">Ocean Vetiver</div>
+                    <div class="p-notes">Vetiver %45 · Bergamot %35 · Misk %20</div>
+                    <span class="p-badge badge-masc">Önerilen</span>
+                </div>
+                <div class="popular-card">
+                    <canvas id="pop4-canvas"></canvas>
+                    <div class="p-name">Royal Sandal</div>
+                    <div class="p-notes">Sandal %50 · Amber %30 · Sedir %20</div>
+                    <span class="p-badge badge-masc">Klasik</span>
+                </div>
+            </div>
+        </section>
+
+    </div>
+  <footer>
+    <div>
+      <a href="index.html" class="footer-logo">E<span>SS</span>ENCIA</a>
+      <p class="footer-tagline">Kokuların Sanal Atölyesi</p>
+    </div>
+    <p class="footer-copy">&copy; 2025 Essencia. Tüm hakları saklıdır.</p>
+  </footer>
+
+    <script>
+        // Sayfa değiştirme fonksiyonu
+        function showPage(pageName) {
+            // Bu basit versiyonda sadece erkek sayfası aktif, 
+            // diğer butonlara tıklandığında konsola yazdırabiliriz.
+            console.log("Navigating to: " + pageName);
+            if (pageName !== 'male') {
+                alert("Bu demo sadece Erkek Koleksiyonu sayfasını içerir.");
+            }
+        }
+
+        // Şişe doldurma animasyon fonksiyonu
+        function updateBottle(gender) {
+            const grid = document.getElementById(gender + '-essence-grid');
+            const inputs = grid.querySelectorAll('.essence-input');
+            const layersContainer = document.getElementById(gender + '-layers');
+            const pctDisplay = document.getElementById(gender + '-pct');
+            const progressBar = document.getElementById(gender + '-bar');
+            const fillText = document.getElementById(gender + '-fill-text');
+            const warnText = document.getElementById(gender + '-warn');
+
+            let totalPercent = 0;
+            let filledIngredients = [];
+            let svgLayers = '';
+
+            inputs.forEach(input => {
+                let value = parseInt(input.value) || 0;
+                if (value < 0) value = 0;
+                if (value > 100) value = 100;
+                input.value = value;
+
+                totalPercent += value;
+
+                if (value > 0) {
+                    filledIngredients.push(input.dataset.label + ' %' + value);
+
+                    // Yeni şişe: viewBox 220x300, yıldız Y=202 (alt) → Y=28 (üst), toplam yükseklik=174
+                    const bottleBottom = 202;
+                    const bottleTop = 28;
+                    const totalHeight = bottleBottom - bottleTop;
+
+                    let layerHeight = (value / 100) * totalHeight;
+                    let yPosition = bottleBottom - ((totalPercent / 100) * totalHeight);
+
+                    svgLayers = `<rect x="0" y="${yPosition}" width="220" height="${layerHeight + 2}" fill="${input.dataset.color}" opacity="0.75"/>` + svgLayers;
+                }
+            });
+
+            // Sıvı yüzey dalgası
+            if (totalPercent > 0 && totalPercent <= 100) {
+                const waveY = 202 - ((Math.min(totalPercent, 100) / 100) * 174);
+                svgLayers += `<ellipse cx="110" cy="${waveY}" rx="80" ry="4" fill="rgba(255,255,255,0.15)"/>`;
+            }
+
+            // UI Güncelleme
+            pctDisplay.innerText = Math.min(totalPercent, 100) + '%';
+            progressBar.style.width = Math.min(totalPercent, 100) + '%';
+
+            if (filledIngredients.length > 0) {
+                fillText.innerText = filledIngredients.join(' · ');
+            } else {
+                fillText.innerText = 'Esansları girerek başla...';
+            }
+
+            // Durum Kontrolleri
+            if (totalPercent > 100) {
+                warnText.innerText = 'Dikkat: Toplam %100\'ü aştı!';
+                warnText.style.color = '#e08060';
+            } else if (totalPercent === 100) {
+                warnText.innerText = '✨ Mükemmel karışım! Şişen hazır.';
+                warnText.style.color = '#1a3060';
+            } else {
+                warnText.innerText = '';
+                warnText.style.color = '#e08060';
+            }
+
+            layersContainer.innerHTML = svgLayers;
+        }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+        // 1. Ana (Üst) Şişe
+        const heroCanvas = document.getElementById('hero-bottle-canvas');
+        if (heroCanvas) {
+            const W = 320, H = 320;
+            heroCanvas.width = W; heroCanvas.height = H;
+            heroCanvas.style.width = W + 'px'; heroCanvas.style.height = H + 'px';
+
+            const renderer = new THREE.WebGLRenderer({ canvas: heroCanvas, antialias: true, alpha: true });
+            renderer.setSize(W, H);
+            renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(35, W / H, 0.1, 100);
+            camera.position.set(0, 0, 8);
+
+            scene.add(new THREE.AmbientLight(0xdce8f5, 1.2));
+            const dL = new THREE.DirectionalLight(0xffffff, 1.8);
+            dL.position.set(2, 4, 3);
+            scene.add(dL);
+
+            const group = new THREE.Group();
+            scene.add(group);
+
+            const loader = new GLTFLoader();
+            loader.load('./mavi.glb', (gltf) => {
+                const model = gltf.scene;
+
+                const box = new THREE.Box3().setFromObject(model);
+                const size = new THREE.Vector3();
+                box.getSize(size);
+                const scale = 5.0 / Math.max(size.x, size.y, size.z);
+                model.scale.setScalar(scale);
+
+                box.setFromObject(model);
+                const center = new THREE.Vector3();
+                box.getCenter(center);
+                model.position.sub(center);
+
+                model.traverse(child => {
+                    if (child.isMesh && child.material) {
+                        child.material.transparent = true;
+                        child.material.opacity = 0.85;
+                        child.material.side = THREE.DoubleSide;
+                    }
+                });
+
+                group.add(model);
+            });
+
+            let rotY = 0;
+            function animateHero() {
+                requestAnimationFrame(animateHero);
+                rotY += 0.005;
+                group.rotation.y = rotY;
+                renderer.render(scene, camera);
+            }
+            animateHero();
+        }
+
+        // 2. Alt (Önerilen) Şişeler
+        const canvasIds = ['pop1-canvas', 'pop2-canvas', 'pop3-canvas', 'pop4-canvas'];
+        const renderers = [];
+        const scenes = [];
+        const cameras = [];
+        const groups = [];
+        const popW = 60, popH = 100;
+
+        canvasIds.forEach(id => {
+            const canvas = document.getElementById(id);
+            if (!canvas) return;
+
+            canvas.width = popW; canvas.height = popH;
+            canvas.style.width = popW + 'px'; canvas.style.height = popH + 'px';
+
+            const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+            renderer.setSize(popW, popH);
+            renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(40, popW / popH, 0.1, 100);
+            camera.position.set(0, 0, 7);
+
+            scene.add(new THREE.AmbientLight(0xdce8f5, 1.2));
+            const dL = new THREE.DirectionalLight(0xffffff, 1.5);
+            dL.position.set(2, 4, 3);
+            scene.add(dL);
+
+            const group = new THREE.Group();
+            scene.add(group);
+
+            renderers.push(renderer);
+            scenes.push(scene);
+            cameras.push(camera);
+            groups.push(group);
+        });
+
+        if (renderers.length > 0) {
+            const loader = new GLTFLoader();
+            loader.load('./mavi.glb', (gltf) => {
+                const baseModel = gltf.scene;
+
+                const box = new THREE.Box3().setFromObject(baseModel);
+                const size = new THREE.Vector3();
+                box.getSize(size);
+                const scale = 4.5 / Math.max(size.x, size.y, size.z);
+                baseModel.scale.setScalar(scale);
+
+                box.setFromObject(baseModel);
+                const center = new THREE.Vector3();
+                box.getCenter(center);
+                baseModel.position.sub(center);
+
+                baseModel.traverse(child => {
+                    if (child.isMesh && child.material) {
+                        child.material.transparent = true;
+                        child.material.opacity = 0.85;
+                        child.material.side = THREE.DoubleSide;
+                    }
+                });
+
+                groups.forEach(group => {
+                    group.add(baseModel.clone());
+                });
+            });
+
+            let rotY = 0;
+            function animatePop() {
+                requestAnimationFrame(animatePop);
+                rotY += 0.005;
+                for(let i=0; i<renderers.length; i++) {
+                    groups[i].rotation.y = rotY;
+                    renderers[i].render(scenes[i], cameras[i]);
+                }
+            }
+            animatePop();
+        }
+    </script>
+
+<!-- Contact Sidebar -->
+<div id="contactSidebarOverlay" class="contact-sidebar-overlay" onclick="toggleSidebar()"></div>
+<div id="contactSidebar" class="sidebar">
+  <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+  <h3>İletişim</h3>
+  <p><i class="fa-solid fa-phone"></i> Telefon: +90 555 123 45 67</p>
+  <p>📧 Email: info@essencia.com</p>
+</div>
+
+<script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById("contactSidebar");
+      const overlay = document.getElementById("contactSidebarOverlay");
+      if (sidebar.style.width === "350px") {
+        sidebar.style.width = "0";
+        overlay.classList.remove("active");
+      } else {
+        sidebar.style.width = "350px";
+        overlay.classList.add("active");
+      }
+    }
+</script>
+
+</body>
+</html>

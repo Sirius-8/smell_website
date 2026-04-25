@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sepetim</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="iletisim.css">
+  <link rel="stylesheet" href="sepet.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="site-nav">
+    <div class="nav-brand">
+      <a href="index.html" class="nav-logo">E<span>SS</span>ENCIA</a>
+      <div class="nav-slogan">Kendini Keşfet</div>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Anasayfa</a></li>
+
+      <li class="nav-dropdown">
+        <a href="#" class="dropdown-toggle">Atölye ▾</a>
+        <ul class="dropdown-menu">
+          <li><a href="kadin.html">Kadın</a></li>
+          <li><a href="erkekparfum.html">Erkek</a></li>
+        </ul>
+      </li>
+
+      <li><a href="favoritee.html">Favorilerim</a></li>
+      <li><a href="#" onclick="toggleSidebar(); return false;">İletişim</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <a href="girisekranı.html" class="nav-btn" style="text-decoration: none;">Kayıt Ol</a>
+      <button class="nav-cart" aria-label="Sepete Ekle" onclick="window.location.href='sepet.html'">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"/>
+          <circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+        <span class="nav-cart-label">Sepete Ekle</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- SEPET SAYFASI -->
+  <div class="cart-page">
+    <div class="cart-card">
+      <h1>Sepetim</h1>
+
+      <div class="cart-item" data-price="450">
+        <img src="pembeparfum.png" alt="Essencia Floral" class="product-img">
+
+        <div class="product-info">
+          <h2>Essencia Floral</h2>
+          <p>Çiçeksi hafif koku</p>
+          <span class="price">₺450</span>
+
+          <div class="quantity">
+            <button class="minus-btn" type="button">-</button>
+            <span>1</span>
+            <button class="plus-btn" type="button">+</button>
+          </div>
+        </div>
+
+        <button class="delete-btn" type="button">🗑</button>
+      </div>
+
+      <div class="cart-item" data-price="620">
+        <img src="siyahparfum.png" alt="Essencia Night" class="product-img">
+
+        <div class="product-info">
+          <h2>Essencia Night</h2>
+          <p>Yoğun ve kalıcı</p>
+          <span class="price">₺620</span>
+
+          <div class="quantity">
+            <button class="minus-btn" type="button">-</button>
+            <span>2</span>
+            <button class="plus-btn" type="button">+</button>
+          </div>
+        </div>
+
+        <button class="delete-btn" type="button">🗑</button>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="total">
+        <span>Toplam</span>
+        <strong>₺1690</strong>
+      </div>
+
+      <button class="buy-btn" type="button">Satın Al →</button>
+    </div>
+  </div>
+
+  <script src="sepet.js"></script>
+
+<!-- Contact Sidebar -->
+<div id="contactSidebarOverlay" class="contact-sidebar-overlay" onclick="toggleSidebar()"></div>
+<div id="contactSidebar" class="sidebar">
+  <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+  <h3>İletişim</h3>
+  <p><i class="fa-solid fa-phone"></i> Telefon: +90 555 123 45 67</p>
+  <p>📧 Email: info@essencia.com</p>
+</div>
+
+<script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById("contactSidebar");
+      const overlay = document.getElementById("contactSidebarOverlay");
+      if (sidebar.style.width === "350px") {
+        sidebar.style.width = "0";
+        overlay.classList.remove("active");
+      } else {
+        sidebar.style.width = "350px";
+        overlay.classList.add("active");
+      }
+    }
+</script>
+
+</body>
+</html>

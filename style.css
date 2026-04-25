@@ -131,6 +131,7 @@ body {
   text-decoration: none;
   color: var(--text-mid);
 
+  font-family: 'Jost', sans-serif;
   font-size: 14px;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -193,6 +194,7 @@ body {
 
   padding: 11px 22px;
 
+  font-family: 'Jost', sans-serif;
   font-size: 11px;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -228,9 +230,10 @@ body {
   cursor: pointer;
 
   font-family: 'Jost', sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 2px;
   text-transform: uppercase;
+  font-weight: 400;
 
   color: var(--text-mid);
 
@@ -253,19 +256,20 @@ body {
   padding: 8px 16px;
   border-radius: 20px;
 
-  background: rgba(44, 52, 40, 0.85);
+  background: #5C6D53;
   border: none;
 
   cursor: pointer;
 
-  transition: background 0.25s;
+  transition: background 0.25s, transform 0.2s;
 
   flex-shrink: 0;
-  color: #f7f2ea;
+  color: #fdfdfd;
 }
 
 .nav-cart:hover {
-  background: var(--text-mid);
+  background: #4A5842;
+  transform: translateY(-1px);
 }
 
 .nav-cart svg {

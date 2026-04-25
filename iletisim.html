@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Parfüm Sitem</title>
+    
+  <link rel="stylesheet" href="iletisim.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><a href="#">Ana Sayfa</a></li>
+    <li><a href="#" onclick="toggleSidebar()">İletişim</a></li>
+  </ul>
+</nav>
+
+<div id="contactSidebar" class="sidebar">
+  <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+  <h3>İletişim</h3>
+  <p><i class="fa-solid fa-phone"></i> Telefon: +90 555 123 45 67</p>
+  <p>📧 Email: info@essencia.com</p>
+</div>
+
+<script>
+        function toggleSidebar() {
+          const sidebar = document.getElementById("contactSidebar");
+          if (sidebar.style.width === "250px") {
+            sidebar.style.width = "0";
+          } else {
+            sidebar.style.width = "250px";
+          }
+        }
+    </script>
+</body>
+</html>

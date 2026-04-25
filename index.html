@@ -6,6 +6,8 @@
   <title>Essencia – Sanal Parfüm Atölyesi</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="iletisim.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 </head>
 <body>
@@ -28,11 +30,11 @@
     </li>
 
     <li><a href="#" id="triggerFav">Favorilerim</a></li>
+    <li><a href="#" onclick="toggleSidebar(); return false;">İletişim</a></li>
   </ul>
 
   <div class="nav-right">
-    <button class="nav-btn" onclick="window.location.href='girisekranı.html'">Giriş Yap</button>
-
+    <a href="girisekranı.html" class="nav-btn" style="text-decoration: none;">Kayıt Ol</a>
     <button class="nav-cart" aria-label="Sepete Ekle" onclick="window.location.href='sepet.html'">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -142,7 +144,7 @@
           Taze, odunsu, çiçeksi veya baharatlı — duygularına en çok dokunan
           aile ile başla. Notalar sana yol gösterir.
         </p>
-        <a href="#" class="step-link">Keşfet &rarr;</a>
+        <a href="kisilikAnalizi.html" class="step-link">Keşfet &rarr;</a>
       </div>
       <div class="step-card step-card--pink fade-up delay-1">
         <div class="step-icon">✨</div>
@@ -307,5 +309,27 @@
     });
   </script>
  
+<!-- Contact Sidebar -->
+<div id="contactSidebarOverlay" class="contact-sidebar-overlay" onclick="toggleSidebar()"></div>
+<div id="contactSidebar" class="sidebar">
+  <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+  <h3>İletişim</h3>
+  <p><i class="fa-solid fa-phone"></i> Telefon: +90 555 123 45 67</p>
+  <p>📧 Email: info@essencia.com</p>
+</div>
+
+<script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById("contactSidebar");
+      const overlay = document.getElementById("contactSidebarOverlay");
+      if (sidebar.style.width === "350px") {
+        sidebar.style.width = "0";
+        overlay.classList.remove("active");
+      } else {
+        sidebar.style.width = "350px";
+        overlay.classList.add("active");
+      }
+    }
+</script>
 </body>
 </html>

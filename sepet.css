@@ -1,0 +1,426 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --sage: #8fa071;
+  --sage-dark: #70845f;
+  --cream: #fbf5ec;
+  --text-dark: #1f1f1f;
+  --text-mid: #555;
+  --text-light: #777;
+  --fem-pink-dark: #7a3a50;
+}
+
+body {
+  background: #f4eee4;
+  font-family: Arial, sans-serif;
+}
+
+/* ─── YENİ NAVBAR ─── */
+
+.main-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: #fff;
+  border-bottom: 1px solid #f0f0f0;
+  z-index: 9000;
+}
+
+.nav-container {
+  max-width: 1300px;
+  height: 80px;
+  margin: 0 auto;
+  padding: 0 40px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo a {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 26px;
+  letter-spacing: 6px;
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: 500;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 35px;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links li a,
+.nav-btn-link,
+.dropdown-trigger {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: color 0.3s;
+  font-family: "Jost", sans-serif;
+  padding: 10px 0;
+  display: inline-block;
+}
+
+.nav-links li a:hover,
+.nav-btn-link:hover,
+.dropdown:hover .dropdown-trigger {
+  color: var(--fem-pink-dark);
+}
+
+/* ATÖLYE DROPDOWN */
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  background: white;
+  min-width: 160px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  list-style: none;
+  padding: 10px 0;
+  border-radius: 4px;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+
+  z-index: 9999;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu li a {
+  padding: 10px 20px;
+  display: block;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.auth-btn {
+  border: 1px solid #1a1a1a !important;
+  padding: 8px 22px !important;
+  border-radius: 50px;
+}
+
+/* ─── SEPET SAYFASI ─── */
+
+.cart-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  background: radial-gradient(circle, #fbf6ef 0%, #eee5d8 100%);
+
+  padding: 120px 20px 30px;
+}
+
+.cart-card {
+  width: 470px;
+  background: #fbf5ec;
+  border-radius: 28px;
+  padding: 26px 28px;
+  box-shadow: 0 25px 60px rgba(80, 60, 35, 0.16);
+  margin: 0 auto;
+}
+
+.cart-card h1 {
+  text-align: center;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 34px;
+  color: #70845f;
+  margin-bottom: 22px;
+}
+
+.cart-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 18px;
+  padding: 16px;
+  margin-bottom: 16px;
+  min-height: 125px;
+}
+
+.product-img {
+  width: 115px;
+  height: 115px;
+  object-fit: contain;
+  margin-right: 16px;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.product-info h2 {
+  font-size: 19px;
+  color: #1f2529;
+  margin-bottom: 4px;
+}
+
+.product-info p {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 5px;
+}
+
+.price {
+  display: block;
+  font-size: 19px;
+  font-weight: bold;
+  color: #8fa071;
+  margin-bottom: 13px;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.quantity button {
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 10px;
+  background: #8fa071;
+  color: white;
+  font-size: 21px;
+  cursor: pointer;
+}
+
+.quantity span {
+  font-size: 21px;
+  color: #000;
+}
+
+.delete-btn {
+  position: absolute;
+  right: 16px;
+  bottom: 26px;
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 10px;
+  background: #8fa071;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.quantity button:hover,
+.delete-btn:hover,
+.buy-btn:hover {
+  background: #7f9264;
+}
+
+.divider {
+  height: 1px;
+  background: #d8cbb9;
+  margin: 22px 0 16px;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.total span,
+.total strong {
+  font-size: 21px;
+  color: #34424a;
+  font-weight: bold;
+}
+
+.buy-btn {
+  width: 100%;
+  height: 54px;
+  border: none;
+  border-radius: 14px;
+  background: #8fa071;
+  color: white;
+  font-size: 21px;
+  cursor: pointer;
+}
+
+/* ─── RESPONSIVE ─── */
+
+@media (max-width: 900px) {
+  .nav-container {
+    padding: 0 24px;
+  }
+
+  .nav-logo a {
+    font-size: 22px;
+    letter-spacing: 4px;
+  }
+
+  .nav-links {
+    gap: 20px;
+  }
+
+  .nav-links li a,
+  .nav-btn-link,
+  .dropdown-trigger {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  .cart-card {
+    width: 440px;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-navbar {
+    height: 70px;
+  }
+
+  .nav-container {
+    height: 70px;
+    padding: 0 16px;
+  }
+
+  .nav-logo a {
+    font-size: 18px;
+    letter-spacing: 3px;
+  }
+
+  .nav-links {
+    gap: 12px;
+  }
+
+  .nav-links li a,
+  .nav-btn-link,
+  .dropdown-trigger {
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .auth-btn {
+    padding: 6px 12px !important;
+  }
+
+  .cart-page {
+    padding: 95px 14px 24px;
+  }
+
+  .cart-card {
+    width: 100%;
+    max-width: 390px;
+    padding: 22px 18px;
+  }
+
+  .cart-card h1 {
+    font-size: 30px;
+  }
+
+  .cart-item {
+    min-height: 110px;
+    padding: 14px;
+  }
+
+  .product-img {
+    width: 88px;
+    height: 88px;
+    margin-right: 12px;
+  }
+
+  .product-info h2 {
+    font-size: 16px;
+  }
+
+  .product-info p {
+    font-size: 12px;
+  }
+
+  .price {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .quantity {
+    gap: 10px;
+  }
+
+  .quantity button,
+  .delete-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 17px;
+  }
+
+  .quantity span {
+    font-size: 17px;
+  }
+
+  .delete-btn {
+    right: 12px;
+    bottom: 22px;
+  }
+
+  .buy-btn {
+    height: 50px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-container {
+    padding: 0 12px;
+  }
+
+  .nav-logo a {
+    font-size: 15px;
+    letter-spacing: 2px;
+  }
+
+  .nav-links {
+    gap: 8px;
+  }
+
+  .nav-links li a,
+  .nav-btn-link,
+  .dropdown-trigger {
+    font-size: 7px;
+    letter-spacing: 0;
+  }
+}

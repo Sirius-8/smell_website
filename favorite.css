@@ -19,94 +19,368 @@ body {
     padding-top: 80px; 
 }
 
-/* ===================== GLOBAL NAVBAR ===================== */
-.main-navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #fff;
-    border-bottom: 1px solid #f0f0f0;
-    z-index: 9000;
+/* ===================== NAVBAR ===================== */
+
+.nav-brand {
+  justify-self: start;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 3px;
+
+  white-space: nowrap;
 }
 
-.nav-container {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 40px;
-    height: 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.nav-slogan {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 300;
+
+  letter-spacing: 1.8px;
+
+  color: var(--text-light);
+
+  margin-left: 2px;
 }
 
-.nav-logo a {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 26px;
-    letter-spacing: 6px;
-    text-decoration: none;
-    color: #1a1a1a;
-    font-weight: 500;
-    text-transform: uppercase;
+
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 1000;
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+
+  column-gap: 40px;
+
+  padding: 20px 60px;
+
+  background: rgba(210, 228, 206, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-bottom: 1px solid rgba(154, 184, 154, 0.35);
 }
 
+/* Sol logo */
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 300;
+  letter-spacing: 7px;
+  text-transform: uppercase;
+
+  color: var(--text-dark);
+  text-decoration: none;
+
+  white-space: nowrap;
+}
+
+.nav-logo span {
+  color: #7a9e6e;
+}
+
+/* Orta menü */
 .nav-links {
-    display: flex;
-    list-style: none;
-    gap: 35px;
-    align-items: center;
+  justify-self: end;
+  margin-right: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 40px;
+
+  list-style: none;
+
+  white-space: nowrap;
 }
 
-.nav-links li a, .nav-btn-link, .dropdown-trigger {
-    text-decoration: none;
-    color: #1a1a1a;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    transition: color 0.3s;
-    font-family: 'Jost', sans-serif;
-    padding: 10px 0;
-    display: inline-block;
+.nav-links > li {
+  position: relative;
+  flex-shrink: 0;
 }
 
-.nav-links li a:hover, .nav-btn-link:hover, .dropdown:hover .dropdown-trigger {
-    color: var(--fem-pink-dark);
+.nav-links > li > a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  text-decoration: none;
+  color: var(--text-mid);
+
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 400;
+
+  transition: color 0.25s;
+
+  white-space: nowrap;
 }
 
-/* ATÖLYE DROPDOWN */
-.dropdown { position: relative; }
+.nav-icon {
+  font-size: 13px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.nav-links > li > a:hover {
+  color: var(--text-dark);
+}
+
+/* Dropdown */
+.nav-dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+}
+
 .dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: white;
-    min-width: 160px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    list-style: none;
-    padding: 10px 0;
-    border-radius: 4px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: all 0.3s ease;
-}
-.dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
 
-.dropdown-menu li a { 
-    padding: 10px 20px; 
-    display: block; 
-    text-transform: uppercase;
+  min-width: 150px;
+  padding: 8px 0;
+
+  background: rgba(247, 242, 234, 0.98);
+  border: 1px solid rgba(184, 201, 176, 0.45);
+  border-radius: 2px;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(-6px);
+
+  transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
+  box-shadow: 0 10px 32px rgba(44, 40, 32, 0.08);
+
+  list-style: none;
+}
+
+.nav-dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-menu li a {
+  display: block;
+
+  padding: 11px 22px;
+
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  color: var(--text-mid);
+
+  transition: background 0.2s, color 0.2s;
+
+  white-space: nowrap;
+}
+
+.dropdown-menu li a:hover {
+  background: var(--sage-pale);
+  color: var(--text-dark);
+}
+
+/* Sağ taraf */
+.nav-right {
+  justify-self: end;
+
+  display: flex;
+  align-items: center;
+
+  gap: 40px;
+
+  white-space: nowrap;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 400;
+
+  color: var(--text-mid);
+
+  transition: color 0.25s;
+
+  padding: 0;
+
+  white-space: nowrap;
+}
+
+.nav-btn:hover {
+  color: var(--text-dark);
+}
+
+.nav-cart {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 16px;
+  border-radius: 20px;
+
+  background: #5C6D53;
+  border: none;
+
+  cursor: pointer;
+
+  transition: background 0.25s, transform 0.2s;
+
+  flex-shrink: 0;
+  color: #fdfdfd;
+}
+
+.nav-cart:hover {
+  background: #4A5842;
+  transform: translateY(-1px);
+}
+
+.nav-cart svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+.nav-cart-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #f7f2ea;
+}
+
+/* Tablet ve küçük ekran düzeni */
+@media (max-width: 1100px) {
+  .site-nav {
+    column-gap: 24px;
+    padding: 16px 24px;
+  }
+  .nav-links {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 900px) {
+  .site-nav {
+    padding: 14px 20px;
+    column-gap: 16px;
+  }
+  .nav-logo {
+    font-size: 20px;
+    letter-spacing: 4px;
+  }
+  .nav-slogan {
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+  .nav-links {
+    gap: 12px;
+  }
+  .nav-links > li > a {
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+  .nav-right {
+    gap: 12px;
+  }
+  .nav-btn {
     font-size: 10px;
     letter-spacing: 1px;
+  }
+  .nav-cart {
+    padding: 6px 12px;
+    gap: 6px;
+  }
+  .nav-cart-label {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
 }
 
-.auth-btn {
-    border: 1px solid #1a1a1a !important;
-    padding: 8px 22px !important;
-    border-radius: 50px;
+/* Daha küçük ekranlar */
+@media (max-width: 680px) {
+  .site-nav {
+    padding: 12px 16px;
+    column-gap: 12px;
+  }
+  .nav-logo {
+    font-size: 16px;
+    letter-spacing: 2px;
+  }
+  .nav-slogan {
+    display: none; /* Yer kazanmak için slogan gizlenir */
+  }
+  .nav-links {
+    gap: 8px;
+  }
+  .nav-links > li > a {
+    font-size: 9px;
+    letter-spacing: 0.5px;
+  }
+  .nav-right {
+    gap: 8px;
+  }
+  .nav-btn {
+    font-size: 9px;
+    letter-spacing: 0.5px;
+  }
+  .nav-cart {
+    padding: 5px 8px;
+    gap: 4px;
+  }
+  .nav-cart-label {
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+}
+
+/* Çok dar ekranlarda taşmayı engelleme */
+@media (max-width: 480px) {
+  .site-nav {
+    padding: 10px 12px;
+    column-gap: 8px;
+  }
+  .nav-logo {
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  .nav-links > li > a {
+    font-size: 8px;
+    letter-spacing: 0;
+  }
+  .nav-btn {
+    font-size: 8px;
+    letter-spacing: 0;
+  }
+  .nav-cart-label {
+    font-size: 7px;
+    letter-spacing: 0;
+  }
+  .nav-cart svg {
+    width: 12px;
+    height: 12px;
+  }
 }
 
 /* ===================== TAM EKRAN FAVORİLER ===================== */
