@@ -325,11 +325,63 @@ body {
     text-align: center;
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
 }
 
 .popular-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+}
+
+.card-fav-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    color: #d4a0b0; /* Pembe */
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s;
+    z-index: 10;
+}
+
+.card-fav-btn:hover {
+    transform: scale(1.2);
+}
+
+.card-fav-btn.active {
+    color: #e63946; /* Kırmızı */
+}
+
+.p-price-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.p-price {
+    font-size: 16px;
+    font-weight: 500;
+    color: #1a3060;
+}
+
+.p-cart-btn {
+    background: transparent;
+    border: none;
+    color: #1a3060;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.p-cart-btn:hover {
+    transform: scale(1.1);
+    color: #0d1a2e;
 }
 
 .popular-card .p-name {
@@ -343,16 +395,19 @@ body {
     font-size: 11px;
     color: #aaa;
     letter-spacing: 0.5px;
-    margin-bottom: 10px;
+    margin-bottom: 4px;
 }
 
 .p-badge {
-    display: inline-block;
+    position: absolute;
+    top: 15px;
+    left: 15px;
     font-size: 10px;
     letter-spacing: 1.5px;
     text-transform: uppercase;
     padding: 3px 10px;
     border-radius: 10px;
+    z-index: 10;
 }
 
 .badge-masc {

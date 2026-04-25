@@ -280,28 +280,48 @@
             <h2 style="font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;margin-bottom:8px;">Erkeklere Özel Parfümler</h2>
             <div class="popular-grid">
                 <div class="popular-card">
+                    <span class="p-badge badge-masc">En Çok Satan</span>
+                    <button class="card-fav-btn" onclick="toggleHeart(this)"><i class="fa-solid fa-heart"></i></button>
                     <canvas id="pop1-canvas"></canvas>
                     <div class="p-name">Noir Wood</div>
                     <div class="p-notes">Sedir %40 · Amber %35 · Misk %25</div>
-                    <span class="p-badge badge-masc">En Çok Satan</span>
+                    <div class="p-price-row">
+                        <span class="p-price">2.000 TL</span>
+                        <button class="p-cart-btn"><i class="fa-solid fa-bag-shopping"></i></button>
+                    </div>
                 </div>
                 <div class="popular-card">
+                    <span class="p-badge badge-masc">Yeni</span>
+                    <button class="card-fav-btn" onclick="toggleHeart(this)"><i class="fa-solid fa-heart"></i></button>
                     <canvas id="pop2-canvas"></canvas>
                     <div class="p-name">Spicy Amber</div>
                     <div class="p-notes">Amber %50 · Biber %30 · Vetiver %20</div>
-                    <span class="p-badge badge-masc">Yeni</span>
+                    <div class="p-price-row">
+                        <span class="p-price">3.990 TL</span>
+                        <button class="p-cart-btn"><i class="fa-solid fa-bag-shopping"></i></button>
+                    </div>
                 </div>
                 <div class="popular-card">
+                    <span class="p-badge badge-masc">Önerilen</span>
+                    <button class="card-fav-btn" onclick="toggleHeart(this)"><i class="fa-solid fa-heart"></i></button>
                     <canvas id="pop3-canvas"></canvas>
                     <div class="p-name">Ocean Vetiver</div>
                     <div class="p-notes">Vetiver %45 · Bergamot %35 · Misk %20</div>
-                    <span class="p-badge badge-masc">Önerilen</span>
+                    <div class="p-price-row">
+                        <span class="p-price">2.650 TL</span>
+                        <button class="p-cart-btn"><i class="fa-solid fa-bag-shopping"></i></button>
+                    </div>
                 </div>
                 <div class="popular-card">
+                    <span class="p-badge badge-masc">Klasik</span>
+                    <button class="card-fav-btn" onclick="toggleHeart(this)"><i class="fa-solid fa-heart"></i></button>
                     <canvas id="pop4-canvas"></canvas>
                     <div class="p-name">Royal Sandal</div>
                     <div class="p-notes">Sandal %50 · Amber %30 · Sedir %20</div>
-                    <span class="p-badge badge-masc">Klasik</span>
+                    <div class="p-price-row">
+                        <span class="p-price">2.989 TL</span>
+                        <button class="p-cart-btn"><i class="fa-solid fa-bag-shopping"></i></button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -625,6 +645,10 @@
         sidebar.style.width = "350px";
         overlay.classList.add("active");
       }
+    }
+
+    function toggleHeart(btn) {
+      btn.classList.toggle('active');
     }
 
     function checkLogin() {
