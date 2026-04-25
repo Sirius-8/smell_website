@@ -191,10 +191,9 @@ body {
   position: absolute;
   top: 28px;
   right: 38px;
-
+  z-index: 10002;
   font-size: 42px;
   line-height: 1;
-
   background: none;
   border: none;
   cursor: pointer;

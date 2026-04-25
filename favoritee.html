@@ -84,24 +84,30 @@
 
   <!-- JS EN ALTTA -->
   <script>
-    const triggerFav = document.getElementById("triggerFav");
     const closeFavBtn = document.getElementById("closeFavBtn");
     const favScreen = document.getElementById("favScreen");
 
-    triggerFav.addEventListener("click", function(event) {
-      event.preventDefault();
-      favScreen.classList.add("is-active");
-    });
+    if (closeFavBtn) {
+      closeFavBtn.addEventListener("click", function() {
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.location.href = "index.html";
+        }
+      });
+    }
 
-    closeFavBtn.addEventListener("click", function() {
-      favScreen.classList.remove("is-active");
-    });
-
-    favScreen.addEventListener("click", function(event) {
-      if (event.target === favScreen) {
-        favScreen.classList.remove("is-active");
-      }
-    });
+    if (favScreen) {
+      favScreen.addEventListener("click", function(event) {
+        if (event.target === favScreen) {
+          if (window.history.length > 1) {
+            window.history.back();
+          } else {
+            window.location.href = "index.html";
+          }
+        }
+      });
+    }
   </script>
 
 </body>
