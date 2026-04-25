@@ -288,7 +288,7 @@
                     <div class="p-notes">Sedir %40 · Amber %35 · Misk %25</div>
                     <div class="p-price-row">
                         <span class="p-price">2.000 TL</span>
-                        <button class="p-cart-btn" onclick="addToCart('Noir Wood', 2000)"><i class="fa-solid fa-bag-shopping"></i></button>
+                        <button class="p-cart-btn" onclick="addToCart('Noir Wood', 2000, 1)"><i class="fa-solid fa-bag-shopping"></i></button>
                     </div>
                 </div>
                 <div class="popular-card" data-id="2" data-name="Spicy Amber" data-notes="Amber %50 · Biber %30 · Vetiver %20" data-price="3.990 TL" data-category="Erkek Koleksiyonu">
@@ -299,7 +299,7 @@
                     <div class="p-notes">Amber %50 · Biber %30 · Vetiver %20</div>
                     <div class="p-price-row">
                         <span class="p-price">3.990 TL</span>
-                        <button class="p-cart-btn" onclick="addToCart('Spicy Amber', 3990)"><i class="fa-solid fa-bag-shopping"></i></button>
+                        <button class="p-cart-btn" onclick="addToCart('Spicy Amber', 3990, 2)"><i class="fa-solid fa-bag-shopping"></i></button>
                     </div>
                 </div>
                 <div class="popular-card" data-id="3" data-name="Ocean Vetiver" data-notes="Vetiver %45 · Bergamot %35 · Misk %20" data-price="2.650 TL" data-category="Erkek Koleksiyonu">
@@ -310,7 +310,7 @@
                     <div class="p-notes">Vetiver %45 · Bergamot %35 · Misk %20</div>
                     <div class="p-price-row">
                         <span class="p-price">2.650 TL</span>
-                        <button class="p-cart-btn" onclick="addToCart('Ocean Vetiver', 2650)"><i class="fa-solid fa-bag-shopping"></i></button>
+                        <button class="p-cart-btn" onclick="addToCart('Ocean Vetiver', 2650, 3)"><i class="fa-solid fa-bag-shopping"></i></button>
                     </div>
                 </div>
                 <div class="popular-card" data-id="4" data-name="Royal Sandal" data-notes="Sandal %50 · Amber %30 · Sedir %20" data-price="2.989 TL" data-category="Erkek Koleksiyonu">
@@ -321,7 +321,7 @@
                     <div class="p-notes">Sandal %50 · Amber %30 · Sedir %20</div>
                     <div class="p-price-row">
                         <span class="p-price">2.989 TL</span>
-                        <button class="p-cart-btn" onclick="addToCart('Royal Sandal', 2989)"><i class="fa-solid fa-bag-shopping"></i></button>
+                        <button class="p-cart-btn" onclick="addToCart('Royal Sandal', 2989, 4)"><i class="fa-solid fa-bag-shopping"></i></button>
                     </div>
                 </div>
             </div>
@@ -666,11 +666,23 @@
     // toggleHeart fonksiyonu favorites.js içerisinden yönetilmektedir.
 
 
-    function addToCart(name, price) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.push({ name, price, quantity: 1 });
-        localStorage.setItem('cart', JSON.stringify(cart));
-        alert(name + ' sepete eklendi!');
+    async function addToCart(name, price, urunId) {
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        const userId = localStorage.getItem('userId');
+
+        if (isLoggedIn && userId) {
+            try {
+                await essenciaApi.addToCart(userId, urunId, 1);
+                alert(name + ' sepete eklendi!');
+            } catch (error) {
+                console.error('Sepete ekleme hatası:', error);
+            }
+        } else {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ id: urunId, name, price, quantity: 1 });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(name + ' sepete eklendi!');
+        }
     }
 
     function checkLogin() {

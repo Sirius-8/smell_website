@@ -132,8 +132,12 @@ app.get('/api/sepet/:userId', async (req, res) => {
     if (data) return res.json(data);
   }
   const db = readDB();
-  const sepet = db.SEPET.filter(s => s.KULLANICI_ID == req.params.userId);
-  res.json(sepet);
+  const userSepet = db.SEPET.filter(s => s.KULLANICI_ID == req.params.userId);
+  const detailedSepet = userSepet.map(s => {
+    const product = db.URUNLER.find(u => u.URUN_ID == s.URUN_ID);
+    return { ...s, product };
+  });
+  res.json(detailedSepet);
 });
 
 app.post('/api/sepet/ekle', async (req, res) => {
@@ -150,6 +154,35 @@ app.post('/api/sepet/ekle', async (req, res) => {
   db.SEPET.push(newItem);
   writeDB(db);
   res.json({ success: true, sepetId: newItem.SEPET_ID });
+});
+
+app.delete('/api/sepet/:sepetId', async (req, res) => {
+  if (config.dbMode === 'ORACLE') {
+    await oracleFetch(`SEPET/${req.params.sepetId}`, 'DELETE');
+    return res.json({ success: true });
+  }
+  const db = readDB();
+  const index = db.SEPET.findIndex(s => s.SEPET_ID == req.params.sepetId);
+  if (index !== -1) {
+    db.SEPET.splice(index, 1);
+    writeDB(db);
+  }
+  res.json({ success: true });
+});
+
+app.patch('/api/sepet/:sepetId', async (req, res) => {
+  const { adet } = req.body;
+  if (config.dbMode === 'ORACLE') {
+    await oracleFetch(`SEPET/${req.params.sepetId}`, 'PATCH', { ADET: adet });
+    return res.json({ success: true });
+  }
+  const db = readDB();
+  const index = db.SEPET.findIndex(s => s.SEPET_ID == req.params.sepetId);
+  if (index !== -1) {
+    db.SEPET[index].ADET = adet;
+    writeDB(db);
+  }
+  res.json({ success: true });
 });
 
 // --- FAVORILER API ---

@@ -58,6 +58,22 @@ const api = {
     return response.json();
   },
 
+  async removeFromCart(sepetId) {
+    const response = await fetch(`${API_BASE_URL}/sepet/${sepetId}`, {
+      method: 'DELETE'
+    });
+    return response.json();
+  },
+
+  async updateCartQuantity(sepetId, adet) {
+    const response = await fetch(`${API_BASE_URL}/sepet/${sepetId}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ adet })
+    });
+    return response.json();
+  },
+
   // Sipariş İşlemleri
   async createOrder(kullaniciId, toplamTutar, teslimatAdresi) {
     const response = await fetch(`${API_BASE_URL}/siparisler/olustur`, {

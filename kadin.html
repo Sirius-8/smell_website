@@ -320,7 +320,7 @@
                     <div class="p-notes">Gül %40 · Yasemin %35 · Vanilya %25</div>
                     <div class="p-price-row">
                         <span class="p-price">2.990 TL</span>
-                        <button class="p-cart-btn" onclick="addToCart('Romantic Rose', 2990)"><i class="fa-solid fa-bag-shopping"></i></button>
+                        <button class="p-cart-btn" onclick="addToCart('Romantic Rose', 2990, 5)"><i class="fa-solid fa-bag-shopping"></i></button>
                     </div>
                 </div>
                 <div class="popular-card" data-id="6" data-name="Fresh Morning" data-notes="Bergamot %50 · Manolya %30 · Misk %20" data-price="3.400 TL" data-category="Kadın Koleksiyonu">
@@ -331,7 +331,7 @@
                     <div class="p-notes">Bergamot %50 · Manolya %30 · Misk %20</div>
                     <div class="p-price-row">
                         <span class="p-price">3.400 TL</span>
-                        <button class="p-cart-btn" onclick="addToCart('Fresh Morning', 3400)"><i class="fa-solid fa-bag-shopping"></i></button>
+                        <button class="p-cart-btn" onclick="addToCart('Fresh Morning', 3400, 6)"><i class="fa-solid fa-bag-shopping"></i></button>
                     </div>
                 </div>
                 <div class="popular-card" data-id="7" data-name="Lavender Dream" data-notes="Lavanta %45 · Bergamot %35 · Misk %20" data-price="2.000 TL" data-category="Kadın Koleksiyonu">
@@ -342,7 +342,7 @@
                     <div class="p-notes">Lavanta %45 · Bergamot %35 · Misk %20</div>
                     <div class="p-price-row">
                         <span class="p-price">2.000 TL</span>
-                        <button class="p-cart-btn" onclick="addToCart('Lavender Dream', 2000)"><i class="fa-solid fa-bag-shopping"></i></button>
+                        <button class="p-cart-btn" onclick="addToCart('Lavender Dream', 2000, 7)"><i class="fa-solid fa-bag-shopping"></i></button>
                     </div>
                 </div>
                 <div class="popular-card" data-id="8" data-name="Sweet Vanilla" data-notes="Vanilya %50 · Gül %30 · Sandal %20" data-price="2.999 TL" data-category="Kadın Koleksiyonu">
@@ -353,7 +353,7 @@
                     <div class="p-notes">Vanilya %50 · Gül %30 · Sandal %20</div>
                     <div class="p-price-row">
                         <span class="p-price">2.999 TL</span>
-                        <button class="p-cart-btn" onclick="addToCart('Sweet Vanilla', 2999)"><i class="fa-solid fa-bag-shopping"></i></button>
+                        <button class="p-cart-btn" onclick="addToCart('Sweet Vanilla', 2999, 8)"><i class="fa-solid fa-bag-shopping"></i></button>
                     </div>
                 </div>
             </div>
@@ -701,11 +701,23 @@
 
     // toggleHeart fonksiyonu favorites.js içerisinden yönetilmektedir.
 
-    function addToCart(name, price) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.push({ name, price, quantity: 1 });
-        localStorage.setItem('cart', JSON.stringify(cart));
-        alert(name + ' sepete eklendi!');
+    async function addToCart(name, price, urunId) {
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        const userId = localStorage.getItem('userId');
+
+        if (isLoggedIn && userId) {
+            try {
+                await essenciaApi.addToCart(userId, urunId, 1);
+                alert(name + ' sepete eklendi!');
+            } catch (error) {
+                console.error('Sepete ekleme hatası:', error);
+            }
+        } else {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ id: urunId, name, price, quantity: 1 });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(name + ' sepete eklendi!');
+        }
     }
 
     function checkLogin() {
