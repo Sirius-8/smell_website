@@ -291,41 +291,21 @@ body {
 
 /* FAVORİ KART */
 
-.fav-item-card {
-  position: relative;
+/* FAVORİ KART */
+
+.favorite-card {
   display: flex;
   align-items: center;
-  gap: 15px;
-
-  padding: 22px 20px;
-  border-radius: 18px;
-
-  transition: 0.3s ease;
+  gap: 18px;
+  padding: 24px;
+  border-radius: 22px;
   text-align: left;
-  overflow: hidden;
-
-  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  box-shadow: 0 14px 35px rgba(0,0,0,0.08);
+  position: relative;
+  margin-bottom: 10px;
 }
 
-.fav-item-card::before {
-  content: "";
-  width: 48px;
-  height: 48px;
-  flex-shrink: 0;
-  display: block;
-
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='64' height='80' viewBox='0 0 64 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M32 13 L38.2 26.1 L52.6 28.1 L42.2 38.3 L44.7 52.6 L32 45.8 L19.3 52.6 L21.8 38.3 L11.4 28.1 L25.8 26.1 Z' fill='black'/%3E%3C/svg%3E");
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  -webkit-mask-size: contain;
-
-  mask-image: url("data:image/svg+xml,%3Csvg width='64' height='80' viewBox='0 0 64 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M32 13 L38.2 26.1 L52.6 28.1 L42.2 38.3 L44.7 52.6 L32 45.8 L19.3 52.6 L21.8 38.3 L11.4 28.1 L25.8 26.1 Z' fill='black'/%3E%3C/svg%3E");
-  mask-repeat: no-repeat;
-  mask-position: center;
-  mask-size: contain;
-}
-
-.female-card {
+.female-fav {
   background:
     radial-gradient(circle at top right, rgba(170, 203, 173, 0.35), transparent 32%),
     radial-gradient(circle at bottom left, rgba(241, 210, 222, 0.55), transparent 38%),
@@ -333,11 +313,7 @@ body {
   border: 1px solid rgba(210, 181, 195, 0.55);
 }
 
-.female-card::before {
-  background: linear-gradient(180deg, #dca8bc 0%, #8fb080 100%);
-}
-
-.male-card {
+.male-fav {
   background:
     radial-gradient(circle at top right, rgba(79, 111, 154, 0.22), transparent 32%),
     radial-gradient(circle at bottom left, rgba(35, 35, 44, 0.28), transparent 42%),
@@ -345,21 +321,60 @@ body {
   border: 1px solid rgba(74, 100, 142, 0.42);
 }
 
-.male-card::before {
-  background: linear-gradient(180deg, #5579a8 0%, #232733 100%);
+.fav-bottle {
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #dca8bc 0%, #8fb080 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 28px;
+  flex-shrink: 0;
 }
 
-.fav-info h4 {
-  font-size: 15px;
-  margin-bottom: 4px;
+.fav-info span {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #9a7b87;
+}
+
+.fav-info h3 {
+  margin: 5px 0;
   color: #1f1f1f;
+  font-size: 18px;
+  font-family: 'Jost', sans-serif;
 }
 
 .fav-info p {
-  font-size: 12px;
-  color: #5f5f5f;
-  line-height: 1.5;
+  color: #666;
+  font-size: 13px;
+  margin-bottom: 8px;
+  line-height: 1.4;
 }
+
+.fav-info strong {
+  color: #70845f;
+  display: block;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.remove-fav-btn {
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  background: #8fa071;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.3s;
+}
+
+.remove-fav-btn:hover {
+  background: #7a3a50;
 }
 
 /* RESPONSIVE */
