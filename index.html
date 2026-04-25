@@ -29,7 +29,7 @@
       </ul>
     </li>
 
-    <li><a href="#" id="triggerFav">Favorilerim</a></li>
+    <li><a href="favoritee.html">Favorilerim</a></li>
     <li><a href="#" onclick="toggleSidebar(); return false;">İletişim</a></li>
   </ul>
 
@@ -238,33 +238,7 @@
     </div>
     <p class="footer-copy">&copy; 2025 Essencia. Tüm hakları saklıdır.</p>
   </footer>
-  <div id="fullScreenFav" class="fav-full-screen">
-    <button class="close-btn" id="closeFavBtn">&times;</button>
-    
-    <div class="fav-container">
-      <div class="fav-header-area">
-        <h2>FAVORİLERİM</h2>
-      </div>
 
-      <div class="fav-grid">
-        <div class="fav-item-card is-fem">
-          <div class="fav-info">
-            <h4>MIDNIGHT ROSE</h4>
-            <p>KADIN KOLEKSİYONU · %50 GÜL, %50 AMBER</p>
-          </div>
-        </div>
-
-        <div class="fav-item-card is-masc">
-          <div class="fav-info">
-            <h4>DEEP OCEAN</h4>
-            <p>ERKEK KOLEKSİYONU · %70 DENİZ, %30 ODUNSU</p>
-          </div>
-        </div>
-      </div>
-
-      <button class="checkout-all-btn">HEPSİNİ KOLEKSİYONA EKLE</button>
-    </div>
-  </div>
 
   <script>
     const observer = new IntersectionObserver(
@@ -279,32 +253,7 @@
     );
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-    // Favoriler Overlay
-    const openBtn = document.getElementById('triggerFav');
-    const closeBtn = document.getElementById('closeFavBtn');
-    const favOverlay = document.getElementById('fullScreenFav');
-
-    if (openBtn) {
-      openBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        favOverlay.classList.add('is-active');
-        document.body.style.overflow = 'hidden';
-      });
-    }
-
-    if (closeBtn) {
-      closeBtn.addEventListener('click', function() {
-        favOverlay.classList.remove('is-active');
-        document.body.style.overflow = 'auto';
-      });
-    }
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === "Escape" && favOverlay.classList.contains('is-active')) {
-        favOverlay.classList.remove('is-active');
-        document.body.style.overflow = 'auto';
-      }
-    });
+    // Favoriler Overlay logic removed as it now redirects to favoritee.html
   </script>
  
 <!-- Contact Sidebar -->
