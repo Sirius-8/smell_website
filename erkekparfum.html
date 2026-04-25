@@ -43,7 +43,18 @@
     </ul>
 
     <div class="nav-right">
-      <a href="girisekranı.html" class="nav-btn" style="text-decoration: none;">Kayıt Ol</a>
+      <a href="girisekranı.html" class="nav-btn" id="nav-login-btn" style="text-decoration: none;">Kayıt Ol</a>
+
+      <div class="profile-dropdown" id="profile-dropdown">
+        <button class="profile-btn">
+          <i class="fa-regular fa-user"></i> Profil
+        </button>
+        <div class="profile-menu">
+          <a href="#"><i class="fa-solid fa-gear"></i> Ayarlar</a>
+          <a href="#" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Çıkış Yap</a>
+        </div>
+      </div>
+
       <button class="nav-cart" aria-label="Sepet" onclick="window.location.href='sepet.html'">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -615,6 +626,28 @@
         overlay.classList.add("active");
       }
     }
+
+    function checkLogin() {
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+        const loginBtn = document.getElementById('nav-login-btn');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        if (isLoggedIn === 'true') {
+            if (loginBtn) loginBtn.style.display = 'none';
+            if (profileDropdown) profileDropdown.style.display = 'block';
+        } else {
+            if (loginBtn) loginBtn.style.display = 'block';
+            if (profileDropdown) profileDropdown.style.display = 'none';
+        }
+    }
+
+    function logout() {
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('userEmail');
+        window.location.href = 'index.html';
+    }
+
+    document.addEventListener('DOMContentLoaded', checkLogin);
 </script>
 
 </body>

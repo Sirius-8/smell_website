@@ -11,11 +11,25 @@ const CATEGORIES = {
       { isim: 'Jardin Secret', notalar: 'Yasemin · Bergamot · Sandal', renk: '#d4689a' },
       { isim: 'Petal Dusk', notalar: 'Lilas · Vanilya · Amber', renk: '#c8a0c0' }
     ],
-    essences: [
-      { isim: 'Gül', oran: 35, renk: '#e8709a' },
-      { isim: 'Yasemin', oran: 28, renk: '#d4a0c0' },
-      { isim: 'Misk', oran: 22, renk: '#c890b0' },
-      { isim: 'Vanilya', oran: 15, renk: '#e8c090' }
+    essencesFemale: [
+      { isim: 'Gül', oran: 30, renk: '#e8709a' },
+      { isim: 'Yasemin', oran: 20, renk: '#d4a0c0' },
+      { isim: 'Manolya', oran: 15, renk: '#f8d0e0' },
+      { isim: 'Vanilya', oran: 10, renk: '#f0e0c0' },
+      { isim: 'Lavanta', oran: 8, renk: '#a080c0' },
+      { isim: 'Bergamot', oran: 7, renk: '#70c060' },
+      { isim: 'Misk', oran: 5, renk: '#c890b0' },
+      { isim: 'Sandal Ağacı', oran: 5, renk: '#a07850' }
+    ],
+    essencesMale: [
+      { isim: 'Bergamot', oran: 25, renk: '#70c060' },
+      { isim: 'Misk', oran: 20, renk: '#c890b0' },
+      { isim: 'Sandal Ağacı', oran: 15, renk: '#a07850' },
+      { isim: 'Sedir Ağacı', oran: 12, renk: '#52a875' },
+      { isim: 'Amber', oran: 10, renk: '#c87840' },
+      { isim: 'Vetiver', oran: 8, renk: '#708060' },
+      { isim: 'Siyah Biber', oran: 5, renk: '#404040' },
+      { isim: 'Hardal', oran: 5, renk: '#d4a040' }
     ]
   },
 
@@ -31,11 +45,25 @@ const CATEGORIES = {
       { isim: 'Verde Luce', notalar: 'Limon · Nane · Vetiver', renk: '#52a875' },
       { isim: 'Morning Dew', notalar: 'Yeşil Çay · Bambu · Misk', renk: '#90c8a0' }
     ],
-    essences: [
-      { isim: 'Bergamot', oran: 32, renk: '#70c060' },
-      { isim: 'Sedir', oran: 28, renk: '#52a875' },
-      { isim: 'Deniz Tuzu', oran: 25, renk: '#6090c0' },
-      { isim: 'Vetiver', oran: 15, renk: '#80a860' }
+    essencesFemale: [
+      { isim: 'Bergamot', oran: 30, renk: '#70c060' },
+      { isim: 'Lavanta', oran: 18, renk: '#a080c0' },
+      { isim: 'Yasemin', oran: 15, renk: '#d4a0c0' },
+      { isim: 'Gül', oran: 12, renk: '#e8709a' },
+      { isim: 'Manolya', oran: 10, renk: '#f8d0e0' },
+      { isim: 'Vanilya', oran: 5, renk: '#f0e0c0' },
+      { isim: 'Misk', oran: 5, renk: '#c890b0' },
+      { isim: 'Sandal Ağacı', oran: 5, renk: '#a07850' }
+    ],
+    essencesMale: [
+      { isim: 'Bergamot', oran: 30, renk: '#70c060' },
+      { isim: 'Vetiver', oran: 20, renk: '#708060' },
+      { isim: 'Sedir Ağacı', oran: 15, renk: '#52a875' },
+      { isim: 'Misk', oran: 12, renk: '#c890b0' },
+      { isim: 'Amber', oran: 8, renk: '#c87840' },
+      { isim: 'Siyah Biber', oran: 7, renk: '#404040' },
+      { isim: 'Sandal Ağacı', oran: 5, renk: '#a07850' },
+      { isim: 'Hardal', oran: 3, renk: '#d4a040' }
     ]
   },
 
@@ -51,11 +79,25 @@ const CATEGORIES = {
       { isim: 'Noir Forêt', notalar: 'Sedir · Vetiver · Deri', renk: '#6a4828' },
       { isim: 'Shadow Wood', notalar: 'Sandal · Kahve · Misk', renk: '#a07850' }
     ],
-    essences: [
-      { isim: 'Oud', oran: 30, renk: '#8a6040' },
-      { isim: 'Sedir', oran: 28, renk: '#6a8060' },
-      { isim: 'Vetiver', oran: 25, renk: '#708060' },
-      { isim: 'Amber', oran: 17, renk: '#c89060' }
+    essencesFemale: [
+      { isim: 'Sandal Ağacı', oran: 28, renk: '#a07850' },
+      { isim: 'Misk', oran: 22, renk: '#c890b0' },
+      { isim: 'Bergamot', oran: 15, renk: '#70c060' },
+      { isim: 'Vanilya', oran: 12, renk: '#f0e0c0' },
+      { isim: 'Lavanta', oran: 8, renk: '#a080c0' },
+      { isim: 'Yasemin', oran: 7, renk: '#d4a0c0' },
+      { isim: 'Gül', oran: 5, renk: '#e8709a' },
+      { isim: 'Manolya', oran: 5, renk: '#f8d0e0' }
+    ],
+    essencesMale: [
+      { isim: 'Sedir Ağacı', oran: 30, renk: '#52a875' },
+      { isim: 'Sandal Ağacı', oran: 22, renk: '#a07850' },
+      { isim: 'Vetiver', oran: 15, renk: '#708060' },
+      { isim: 'Siyah Biber', oran: 10, renk: '#404040' },
+      { isim: 'Amber', oran: 10, renk: '#c87840' },
+      { isim: 'Misk', oran: 8, renk: '#c890b0' },
+      { isim: 'Bergamot', oran: 3, renk: '#70c060' },
+      { isim: 'Hardal', oran: 2, renk: '#d4a040' }
     ]
   },
 
@@ -71,11 +113,25 @@ const CATEGORIES = {
       { isim: 'Mystic Spice', notalar: 'Tarçın · Oud · Misk', renk: '#c87840' },
       { isim: 'Golden Hour', notalar: 'Bal · Benzoin · Gül', renk: '#d4a060' }
     ],
-    essences: [
-      { isim: 'Amber', oran: 33, renk: '#d09050' },
-      { isim: 'Vanilya', oran: 27, renk: '#e8c080' },
-      { isim: 'Sandal', oran: 22, renk: '#c09060' },
-      { isim: 'Tarçın', oran: 18, renk: '#c06040' }
+    essencesFemale: [
+      { isim: 'Vanilya', oran: 30, renk: '#f0e0c0' },
+      { isim: 'Sandal Ağacı', oran: 22, renk: '#a07850' },
+      { isim: 'Misk', oran: 15, renk: '#c890b0' },
+      { isim: 'Gül', oran: 10, renk: '#e8709a' },
+      { isim: 'Lavanta', oran: 8, renk: '#a080c0' },
+      { isim: 'Yasemin', oran: 7, renk: '#d4a0c0' },
+      { isim: 'Bergamot', oran: 5, renk: '#70c060' },
+      { isim: 'Manolya', oran: 3, renk: '#f8d0e0' }
+    ],
+    essencesMale: [
+      { isim: 'Amber', oran: 30, renk: '#c87840' },
+      { isim: 'Sedir Ağacı', oran: 18, renk: '#52a875' },
+      { isim: 'Misk', oran: 15, renk: '#c890b0' },
+      { isim: 'Sandal Ağacı', oran: 12, renk: '#a07850' },
+      { isim: 'Siyah Biber', oran: 10, renk: '#404040' },
+      { isim: 'Hardal', oran: 8, renk: '#d4a040' },
+      { isim: 'Vetiver', oran: 5, renk: '#708060' },
+      { isim: 'Bergamot', oran: 2, renk: '#70c060' }
     ]
   }
 };
@@ -231,7 +287,9 @@ function calculateAndShow() {
     </div>
   `).join('');
 
-  document.getElementById('essence-breakdown').innerHTML = cat.essences.map(e => `
+  const genderEssences = selectedGender === 'male' ? cat.essencesMale : cat.essencesFemale;
+
+  document.getElementById('essence-breakdown').innerHTML = genderEssences.map(e => `
     <div class="essence-row-result">
       <div class="ess-dot" style="background:${e.renk}"></div>
       <span class="ess-name">${e.isim}</span>

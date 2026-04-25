@@ -43,7 +43,18 @@
     </ul>
 
     <div class="nav-right">
-      <a href="girisekranı.html" class="nav-btn" style="text-decoration: none;">Kayıt Ol</a>
+      <a href="girisekranı.html" class="nav-btn" id="nav-login-btn" style="text-decoration: none;">Kayıt Ol</a>
+
+      <div class="profile-dropdown" id="profile-dropdown">
+        <button class="profile-btn">
+          <i class="fa-regular fa-user"></i> Profil
+        </button>
+        <div class="profile-menu">
+          <a href="#"><i class="fa-solid fa-gear"></i> Ayarlar</a>
+          <a href="#" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Çıkış Yap</a>
+        </div>
+      </div>
+
       <button class="nav-cart" aria-label="Sepet" onclick="window.location.href='sepet.html'">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -301,28 +312,48 @@
             <h2 style="font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;margin-bottom:8px;">Kadınlara Özel Parfümler</h2>
             <div class="popular-grid">
                 <div class="popular-card">
+                    <span class="p-badge badge-fem">En Çok Satan</span>
+                    <button class="card-fav-btn" onclick="toggleHeart(this)"><i class="fa-solid fa-heart"></i></button>
                     <canvas id="pop1-canvas"></canvas>
                     <div class="p-name">Romantic Rose</div>
                     <div class="p-notes">Gül %40 · Yasemin %35 · Vanilya %25</div>
-                    <span class="p-badge badge-fem">En Çok Satan</span>
+                    <div class="p-price-row">
+                        <span class="p-price">2.500 TL</span>
+                        <button class="p-cart-btn"><i class="fa-solid fa-bag-shopping"></i></button>
+                    </div>
                 </div>
                 <div class="popular-card">
+                    <span class="p-badge badge-fem">Yeni</span>
+                    <button class="card-fav-btn" onclick="toggleHeart(this)"><i class="fa-solid fa-heart"></i></button>
                     <canvas id="pop2-canvas"></canvas>
                     <div class="p-name">Fresh Morning</div>
                     <div class="p-notes">Bergamot %50 · Manolya %30 · Misk %20</div>
-                    <span class="p-badge badge-fem">Yeni</span>
+                    <div class="p-price-row">
+                        <span class="p-price">2.400 TL</span>
+                        <button class="p-cart-btn"><i class="fa-solid fa-bag-shopping"></i></button>
+                    </div>
                 </div>
                 <div class="popular-card">
+                    <span class="p-badge badge-fem">Önerilen</span>
+                    <button class="card-fav-btn" onclick="toggleHeart(this)"><i class="fa-solid fa-heart"></i></button>
                     <canvas id="pop3-canvas"></canvas>
                     <div class="p-name">Lavender Dream</div>
                     <div class="p-notes">Lavanta %45 · Bergamot %35 · Misk %20</div>
-                    <span class="p-badge badge-fem">Önerilen</span>
+                    <div class="p-price-row">
+                        <span class="p-price">2.000 TL</span>
+                        <button class="p-cart-btn"><i class="fa-solid fa-bag-shopping"></i></button>
+                    </div>
                 </div>
                 <div class="popular-card">
+                    <span class="p-badge badge-fem">Klasik</span>
+                    <button class="card-fav-btn" onclick="toggleHeart(this)"><i class="fa-solid fa-heart"></i></button>
                     <canvas id="pop4-canvas"></canvas>
                     <div class="p-name">Sweet Vanilla</div>
                     <div class="p-notes">Vanilya %50 · Gül %30 · Sandal %20</div>
-                    <span class="p-badge badge-fem">Klasik</span>
+                    <div class="p-price-row">
+                        <span class="p-price">2.989 TL</span>
+                        <button class="p-cart-btn"><i class="fa-solid fa-bag-shopping"></i></button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -653,6 +684,32 @@
         overlay.classList.add("active");
       }
     }
+
+    function toggleHeart(btn) {
+      btn.classList.toggle('active');
+    }
+
+    function checkLogin() {
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+        const loginBtn = document.getElementById('nav-login-btn');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        if (isLoggedIn === 'true') {
+            if (loginBtn) loginBtn.style.display = 'none';
+            if (profileDropdown) profileDropdown.style.display = 'block';
+        } else {
+            if (loginBtn) loginBtn.style.display = 'block';
+            if (profileDropdown) profileDropdown.style.display = 'none';
+        }
+    }
+
+    function logout() {
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('userEmail');
+        window.location.href = 'index.html';
+    }
+
+    document.addEventListener('DOMContentLoaded', checkLogin);
 </script>
 </body>
 </html>

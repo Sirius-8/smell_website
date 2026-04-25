@@ -108,6 +108,21 @@
         overlay.classList.add("active");
       }
     }
+
+    document.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        const password = this.querySelector('input[type="password"]').value;
+
+        if (email === 'admin@gmail.com' && password === 'admin') {
+            alert('Giriş Başarılı!');
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userEmail', email);
+            window.location.href = 'index.html';
+        } else {
+            alert('Hatalı e-posta veya şifre!');
+        }
+    });
 </script>
 
 </body>
