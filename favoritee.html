@@ -6,8 +6,37 @@
   <title>Essencia Favoriler</title>
 
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="favorite.css">
   <link rel="stylesheet" href="iletisim.css">
+  <link rel="stylesheet" href="favorite.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* favorite.css'teki .close-btn çakışmasını önlemek için */
+    #closeFavBtn {
+      position: absolute;
+      top: 28px;
+      right: 38px;
+      z-index: 10002;
+      font-size: 42px;
+      line-height: 1;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #333;
+    }
+    /* favorite.css'in navbar çakışmasını engellemek için style.css önceliği */
+    .site-nav .nav-links {
+        display: flex !important;
+        gap: 40px !important;
+    }
+    .sidebar .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        font-size: 30px;
+        color: #fdfdfd;
+    }
+  </style>
 </head>
 
 <body>
@@ -30,12 +59,23 @@
         </ul>
       </li>
 
-      <li><a href="favoritee.html">Favorilerim</a></li>
+      <li><a href="#" id="triggerFav">Favorilerim</a></li>
       <li><a href="#" onclick="toggleSidebar(); return false;">İletişim</a></li>
     </ul>
 
     <div class="nav-right">
-      <a href="girisekranı.html" class="nav-btn" style="text-decoration: none;">Kayıt Ol</a>
+      <a href="girisekranı.html" class="nav-btn" id="nav-login-btn" style="text-decoration: none;">Kayıt Ol</a>
+      
+      <div class="profile-dropdown" id="profile-dropdown">
+        <button class="profile-btn">
+          <i class="fa-regular fa-user"></i> Profil
+        </button>
+        <div class="profile-menu">
+          <a href="#"><i class="fa-solid fa-gear"></i> Ayarlar</a>
+          <a href="#" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Çıkış Yap</a>
+        </div>
+      </div>
+
       <button class="nav-cart" aria-label="Sepet" onclick="window.location.href='sepet.html'">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -53,7 +93,7 @@
 
   <!-- FAVORİLER EKRANI -->
   <div class="fav-full-screen is-active" id="favScreen">
-    <button class="close-btn" id="closeFavBtn" type="button">&times;</button>
+    <button id="closeFavBtn" type="button">&times;</button>
 
     <div class="fav-container">
       <div class="fav-header-area">
@@ -75,11 +115,22 @@
     </div>
   </div>
 
+  <!-- Contact Sidebar -->
+  <div id="contactSidebarOverlay" class="contact-sidebar-overlay" onclick="toggleSidebar()"></div>
+  <div id="contactSidebar" class="sidebar">
+    <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+    <h3>İletişim</h3>
+    <p><i class="fa-solid fa-phone"></i> Telefon: +90 555 123 45 67</p>
+    <p>📧 Email: info@essencia.com</p>
+  </div>
+
   <!-- JS EN ALTTA -->
+  <script src="frontend_api.js"></script>
   <script src="favorites.js"></script>
   <script>
     const closeFavBtn = document.getElementById("closeFavBtn");
     const favScreen = document.getElementById("favScreen");
+    const triggerFav = document.getElementById("triggerFav");
 
     if (closeFavBtn) {
       closeFavBtn.addEventListener("click", function() {
@@ -90,6 +141,7 @@
         }
       });
     }
+
     if (favScreen) {
       favScreen.addEventListener("click", function(event) {
         if (event.target === favScreen) {
@@ -101,6 +153,47 @@
         }
       });
     }
+
+    if (triggerFav) {
+        triggerFav.addEventListener("click", function(e) {
+            e.preventDefault();
+            favScreen.classList.add("is-active");
+        });
+    }
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById("contactSidebar");
+      const overlay = document.getElementById("contactSidebarOverlay");
+      if (sidebar.style.width === "350px") {
+        sidebar.style.width = "0";
+        overlay.classList.remove("active");
+      } else {
+        sidebar.style.width = "350px";
+        overlay.classList.add("active");
+      }
+    }
+
+    function checkLogin() {
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+        const loginBtn = document.getElementById('nav-login-btn');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        if (isLoggedIn === 'true') {
+            if (loginBtn) loginBtn.style.display = 'none';
+            if (profileDropdown) profileDropdown.style.display = 'block';
+        } else {
+            if (loginBtn) loginBtn.style.display = 'block';
+            if (profileDropdown) profileDropdown.style.display = 'none';
+        }
+    }
+
+    function logout() {
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('userEmail');
+        window.location.href = 'index.html';
+    }
+
+    document.addEventListener('DOMContentLoaded', checkLogin);
   </script>
 
 </body>

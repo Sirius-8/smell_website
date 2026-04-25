@@ -96,7 +96,8 @@
   <p>📧 Email: info@essencia.com</p>
 </div>
 
-<script>
+  <script src="frontend_api.js"></script>
+  <script>
     function toggleSidebar() {
       const sidebar = document.getElementById("contactSidebar");
       const overlay = document.getElementById("contactSidebarOverlay");
@@ -109,21 +110,28 @@
       }
     }
 
-    document.querySelector('form').addEventListener('submit', function(e) {
+    document.querySelector('form').addEventListener('submit', async function(e) {
         e.preventDefault();
         const email = this.querySelector('input[type="email"]').value;
         const password = this.querySelector('input[type="password"]').value;
 
-        if (email === 'admin@gmail.com' && password === 'admin') {
-            alert('Giriş Başarılı!');
-            localStorage.setItem('isLoggedIn', 'true');
-            localStorage.setItem('userEmail', email);
-            window.location.href = 'index.html';
-        } else {
-            alert('Hatalı e-posta veya şifre!');
+        try {
+          const result = await essenciaApi.login(email, password);
+          if (result.success) {
+              alert('Giriş Başarılı!');
+              localStorage.setItem('isLoggedIn', 'true');
+              localStorage.setItem('userEmail', email);
+              localStorage.setItem('userAd', result.user.ad);
+              localStorage.setItem('userId', result.user.id);
+              window.location.href = 'index.html';
+          } else {
+              alert('Hatalı e-posta veya şifre!');
+          }
+        } catch (error) {
+          alert('Sunucu hatası! Lütfen sonra tekrar deneyin.');
         }
     });
-</script>
+  </script>
 
 </body>
 </html>

@@ -3,32 +3,68 @@
 const STORAGE_KEY = 'essenciaFavorites';
 
 // Add or remove item from favorites
-function toggleFavorite(product) {
+async function toggleFavorite(product) {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const userId = localStorage.getItem('userId');
+
+    if (isLoggedIn && userId) {
+        try {
+            const result = await window.essenciaApi.toggleFavorite(userId, product.id);
+            if (result.success) {
+                return result.action === 'added';
+            }
+        } catch (error) {
+            console.error('Backend favori hatası:', error);
+        }
+    }
+
+    // Fallback to localStorage
     let favorites = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
     const index = favorites.findIndex(f => f.id === product.id || (f.name === product.name && f.notes === product.notes));
 
     if (index === -1) {
         favorites.push(product);
-        console.log('Added to favorites:', product.name);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
         return true; // Added
     } else {
         favorites.splice(index, 1);
-        console.log('Removed from favorites:', product.name);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
         return false; // Removed
     }
 }
 
 // Get all favorites
-function getFavorites() {
+async function getFavorites() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const userId = localStorage.getItem('userId');
+
+    if (isLoggedIn && userId) {
+        try {
+            const result = await window.essenciaApi.getFavorites(userId);
+            if (Array.isArray(result)) {
+                // Backend formatını frontend formatına dönüştür
+                return result.map(f => ({
+                    id: f.product.URUN_ID,
+                    name: f.product.URUN_AD,
+                    notes: f.product.ACİK_LAMA,
+                    price: f.product.FIYAT + ' TL',
+                    category: f.product.KOKU_PROFILI,
+                    type: f.product.CINSIYET_KATEGORI.toLowerCase() === 'kadın' ? 'female' : 'male'
+                }));
+            }
+        } catch (error) {
+            console.error('Backend favori yükleme hatası:', error);
+        }
+    }
     return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 }
 
 // Render favorites on the favorites page
-function renderFavorites() {
+async function renderFavorites() {
     const favGrid = document.getElementById('favGrid') || document.getElementById('favoritesGrid');
     if (!favGrid) return;
 
-    const favorites = getFavorites();
+    const favorites = await getFavorites();
     favGrid.innerHTML = '';
 
     if (favorites.length === 0) {
@@ -51,7 +87,7 @@ function renderFavorites() {
                 <h3>${item.name}</h3>
                 <p>${item.notes}</p>
                 <strong>${item.price || ''}</strong>
-                <button class="remove-fav-btn" onclick="window.removeAndRefresh('${item.id || item.name}')" type="button">
+                <button class="remove-fav-btn" onclick="window.removeAndRefresh('${item.id}')" type="button">
                     Favoriden Çıkar
                 </button>
             </div>
@@ -59,7 +95,6 @@ function renderFavorites() {
         favGrid.appendChild(card);
     });
 
-    // Update overlay visibility if needed
     const favMoreOverlay = document.getElementById("favMoreOverlay");
     if (favMoreOverlay) {
         if (favorites.length > 2) {
@@ -70,15 +105,22 @@ function renderFavorites() {
     }
 }
 
-window.removeAndRefresh = function(idOrName) {
-    let favorites = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-    favorites = favorites.filter(f => (f.id !== idOrName && f.name !== idOrName));
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
+window.removeAndRefresh = async function(id) {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const userId = localStorage.getItem('userId');
+
+    if (isLoggedIn && userId) {
+        await window.essenciaApi.toggleFavorite(userId, id);
+    } else {
+        let favorites = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+        favorites = favorites.filter(f => f.id !== id);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
+    }
     renderFavorites();
 };
 
 // Global toggle for heart buttons
-window.toggleHeart = function(btn) {
+window.toggleHeart = async function(btn) {
     const card = btn.closest('.popular-card');
     if (!card) return;
 
@@ -88,20 +130,16 @@ window.toggleHeart = function(btn) {
         notes: card.dataset.notes,
         price: card.dataset.price,
         category: card.dataset.category,
-        type: card.querySelector('.p-badge').classList.contains('badge-fem') ? 'female' : 'male'
+        type: card.querySelector('.p-badge') && card.querySelector('.p-badge').classList.contains('badge-fem') ? 'female' : 'male'
     };
 
-    const isAdded = toggleFavorite(product);
+    const isAdded = await toggleFavorite(product);
     
     if (isAdded) {
         btn.classList.add('active');
-        alert(product.name + ' favorilerinize eklendi!');
     } else {
         btn.classList.remove('active');
-        alert(product.name + ' favorilerinizden çıkarıldı.');
     }
-    
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(getFavorites()));
 };
 
 if (document.readyState === 'loading') {
@@ -110,13 +148,13 @@ if (document.readyState === 'loading') {
     initFavorites();
 }
 
-function initFavorites() {
+async function initFavorites() {
     if (document.getElementById('favGrid') || document.getElementById('favoritesGrid')) {
         renderFavorites();
     }
     
     // Sync heart buttons state on page load
-    const favorites = getFavorites();
+    const favorites = await getFavorites();
     document.querySelectorAll('.popular-card').forEach(card => {
         const id = card.dataset.id;
         const name = card.dataset.name;
@@ -129,8 +167,9 @@ function initFavorites() {
     // Builder Buttons
     const femFavBtn = document.getElementById('fem-fav-action-btn');
     if (femFavBtn) {
-        if (favorites.find(f => f.name === "Özel Karışım (Kadın)")) femFavBtn.classList.add('active');
-        femFavBtn.addEventListener('click', () => {
+        const isFav = favorites.find(f => f.name === "Özel Karışım (Kadın)");
+        if (isFav) femFavBtn.classList.add('active');
+        femFavBtn.addEventListener('click', async () => {
             const notes = document.getElementById('fem-fill-text').textContent;
             const product = {
                 id: 'custom-female',
@@ -140,7 +179,7 @@ function initFavorites() {
                 category: "Özel Koleksiyon",
                 type: 'female'
             };
-            const isAdded = toggleFavorite(product);
+            const isAdded = await toggleFavorite(product);
             if (isAdded) {
                 femFavBtn.classList.add('active');
                 alert('Özel karışımınız favorilere eklendi!');
@@ -148,14 +187,14 @@ function initFavorites() {
                 femFavBtn.classList.remove('active');
                 alert('Özel karışımınız favorilerinden çıkarıldı.');
             }
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(getFavorites()));
         });
     }
 
     const mascFavBtn = document.getElementById('masc-fav-action-btn');
     if (mascFavBtn) {
-        if (favorites.find(f => f.name === "Özel Karışım (Erkek)")) mascFavBtn.classList.add('active');
-        mascFavBtn.addEventListener('click', () => {
+        const isFav = favorites.find(f => f.name === "Özel Karışım (Erkek)");
+        if (isFav) mascFavBtn.classList.add('active');
+        mascFavBtn.addEventListener('click', async () => {
             const notes = document.getElementById('masc-fill-text').textContent;
             const product = {
                 id: 'custom-male',
@@ -165,7 +204,7 @@ function initFavorites() {
                 category: "Özel Koleksiyon",
                 type: 'male'
             };
-            const isAdded = toggleFavorite(product);
+            const isAdded = await toggleFavorite(product);
             if (isAdded) {
                 mascFavBtn.classList.add('active');
                 alert('Özel karışımınız favorilere eklendi!');
@@ -173,7 +212,6 @@ function initFavorites() {
                 mascFavBtn.classList.remove('active');
                 alert('Özel karışımınız favorilerinden çıkarıldı.');
             }
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(getFavorites()));
         });
     }
 }

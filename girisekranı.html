@@ -119,7 +119,8 @@
   <p>📧 Email: info@essencia.com</p>
 </div>
 
-<script>
+  <script src="frontend_api.js"></script>
+  <script>
     function toggleSidebar() {
       const sidebar = document.getElementById("contactSidebar");
       const overlay = document.getElementById("contactSidebarOverlay");
@@ -132,24 +133,29 @@
       }
     }
 
-    document.querySelector('form').addEventListener('submit', function(e) {
+    document.querySelector('form').addEventListener('submit', async function(e) {
         e.preventDefault();
+        const ad = this.querySelectorAll('input[type="text"]')[0].value;
+        const soyad = this.querySelectorAll('input[type="text"]')[1].value;
         const email = this.querySelector('input[type="email"]').value;
         const password = this.querySelector('input[type="password"]').value;
 
-        if (email === 'admin@gmail.com' && password === 'admin') {
-            alert('Kayıt Başarılı! Giriş yapılıyor...');
-            localStorage.setItem('isLoggedIn', 'true');
-            localStorage.setItem('userEmail', email);
-            window.location.href = 'index.html';
-        } else {
-            alert('Kayıt Başarılı!');
-            localStorage.setItem('isLoggedIn', 'true');
-            localStorage.setItem('userEmail', email);
-            window.location.href = 'index.html';
+        try {
+          const result = await essenciaApi.register(ad, soyad, email, password);
+          if (result.success) {
+              alert('Kayıt Başarılı! Giriş yapılıyor...');
+              localStorage.setItem('isLoggedIn', 'true');
+              localStorage.setItem('userEmail', email);
+              localStorage.setItem('userAd', ad);
+              window.location.href = 'index.html';
+          } else {
+              alert('Hata: ' + result.message);
+          }
+        } catch (error) {
+          alert('Sunucu hatası! Lütfen sonra tekrar deneyin.');
         }
     });
-</script>
+  </script>
 
 </body>
 </html>

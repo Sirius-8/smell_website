@@ -280,7 +280,7 @@
             <div class="section-label">Önerilen</div>
             <h2 style="font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;margin-bottom:8px;">Erkeklere Özel Parfümler</h2>
             <div class="popular-grid">
-                <div class="popular-card" data-id="noir-wood" data-name="Noir Wood" data-notes="Sedir %40 · Amber %35 · Misk %25" data-price="2.000 TL" data-category="Erkek Koleksiyonu">
+                <div class="popular-card" data-id="1" data-name="Noir Wood" data-notes="Sedir %40 · Amber %35 · Misk %25" data-price="2.000 TL" data-category="Erkek Koleksiyonu">
                     <span class="p-badge badge-masc">En Çok Satan</span>
                     <button class="card-fav-btn" onclick="toggleHeart(this)"><i class="fa-solid fa-heart"></i></button>
                     <canvas id="pop1-canvas"></canvas>
@@ -291,7 +291,7 @@
                         <button class="p-cart-btn" onclick="addToCart('Noir Wood', 2000)"><i class="fa-solid fa-bag-shopping"></i></button>
                     </div>
                 </div>
-                <div class="popular-card" data-id="spicy-amber" data-name="Spicy Amber" data-notes="Amber %50 · Biber %30 · Vetiver %20" data-price="3.990 TL" data-category="Erkek Koleksiyonu">
+                <div class="popular-card" data-id="2" data-name="Spicy Amber" data-notes="Amber %50 · Biber %30 · Vetiver %20" data-price="3.990 TL" data-category="Erkek Koleksiyonu">
                     <span class="p-badge badge-masc">Yeni</span>
                     <button class="card-fav-btn" onclick="toggleHeart(this)"><i class="fa-solid fa-heart"></i></button>
                     <canvas id="pop2-canvas"></canvas>
@@ -302,7 +302,7 @@
                         <button class="p-cart-btn" onclick="addToCart('Spicy Amber', 3990)"><i class="fa-solid fa-bag-shopping"></i></button>
                     </div>
                 </div>
-                <div class="popular-card" data-id="ocean-vetiver" data-name="Ocean Vetiver" data-notes="Vetiver %45 · Bergamot %35 · Misk %20" data-price="2.650 TL" data-category="Erkek Koleksiyonu">
+                <div class="popular-card" data-id="3" data-name="Ocean Vetiver" data-notes="Vetiver %45 · Bergamot %35 · Misk %20" data-price="2.650 TL" data-category="Erkek Koleksiyonu">
                     <span class="p-badge badge-masc">Önerilen</span>
                     <button class="card-fav-btn" onclick="toggleHeart(this)"><i class="fa-solid fa-heart"></i></button>
                     <canvas id="pop3-canvas"></canvas>
@@ -313,7 +313,7 @@
                         <button class="p-cart-btn" onclick="addToCart('Ocean Vetiver', 2650)"><i class="fa-solid fa-bag-shopping"></i></button>
                     </div>
                 </div>
-                <div class="popular-card" data-id="royal-sandal" data-name="Royal Sandal" data-notes="Sandal %50 · Amber %30 · Sedir %20" data-price="2.989 TL" data-category="Erkek Koleksiyonu">
+                <div class="popular-card" data-id="4" data-name="Royal Sandal" data-notes="Sandal %50 · Amber %30 · Sedir %20" data-price="2.989 TL" data-category="Erkek Koleksiyonu">
                     <span class="p-badge badge-masc">Klasik</span>
                     <button class="card-fav-btn" onclick="toggleHeart(this)"><i class="fa-solid fa-heart"></i></button>
                     <canvas id="pop4-canvas"></canvas>
@@ -635,7 +635,22 @@
   <p>📧 Email: info@essencia.com</p>
 </div>
 
-<script>
+  <script src="frontend_api.js"></script>
+  <script>
+    async function loadMalePerfumes() {
+      try {
+        const products = await essenciaApi.getEsanslar('Erkek');
+        const grid = document.querySelector('.popular-grid');
+        if (products.length > 0 && grid) {
+           // Biz burada statik kartları temizleyip API'den gelenleri ekleyebiliriz
+           // Ancak şimdilik sadece API bağlantısını kurmuş olalım
+           console.log('Erkek parfümleri yüklendi:', products);
+        }
+      } catch (error) {
+        console.error('Parfümler yüklenirken hata:', error);
+      }
+    }
+
     function toggleSidebar() {
       const sidebar = document.getElementById("contactSidebar");
       const overlay = document.getElementById("contactSidebarOverlay");
@@ -678,7 +693,10 @@
         window.location.href = 'index.html';
     }
 
-    document.addEventListener('DOMContentLoaded', checkLogin);
+    document.addEventListener('DOMContentLoaded', () => {
+      checkLogin();
+      loadMalePerfumes();
+    });
 </script>
 
 </body>

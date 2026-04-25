@@ -1,0 +1,47 @@
+{
+  "ESANSLAR": [
+    {
+      "ESANS_ID": 1,
+      "ESANS_AD": "Midnight Rose",
+      "KATEGORI": "Kadın",
+      "ACIKLAMA": "Zengin gül ve amber notaları",
+      "RENK_KODU": "#800080",
+      "BIRIM_FIYAT": 450,
+      "STOK_MIKTARI": 100,
+      "OLUSTURMA_TARIHI": "2026-04-25T10:28:23.818Z"
+    },
+    {
+      "ESANS_ID": 2,
+      "ESANS_AD": "Deep Ocean",
+      "KATEGORI": "Erkek",
+      "ACIKLAMA": "Ferah deniz ve odunsu notalar",
+      "RENK_KODU": "#000080",
+      "BIRIM_FIYAT": 420,
+      "STOK_MIKTARI": 80,
+      "OLUSTURMA_TARIHI": "2026-04-25T10:28:23.818Z"
+    },
+    {
+      "ESANS_ID": 3,
+      "ESANS_AD": "Bergamot Dream",
+      "KATEGORI": "Unisex",
+      "ACIKLAMA": "Narenciye ve ferahlatıcı etki",
+      "RENK_KODU": "#00FF00",
+      "BIRIM_FIYAT": 380,
+      "STOK_MIKTARI": 50,
+      "OLUSTURMA_TARIHI": "2026-04-25T10:28:23.818Z"
+    }
+  ],
+  "KAMPANYALAR": [
+    {
+      "KAMPANYA_ID": 1,
+      "KAMPANYA_AD": "Anneler Günü",
+      "ACIKLAMA": "Tüm kadın parfümlerinde 1 alana 1 bedava",
+      "INDIRIM_ORANI": 50,
+      "BASLANGIC_TARIHI": "2026-04-25T10:28:23.818Z",
+      "BITIS_TARIHI": null,
+      "AKTIF_MI": "E"
+    }
+  ],
+  "KULLANICILAR": [],
+  "ODEME": []
+}

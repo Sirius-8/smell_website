@@ -261,8 +261,6 @@
       { threshold: 0.15 }
     );
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-    // Favoriler Overlay logic removed as it now redirects to favoritee.html
   </script>
  
 <!-- Contact Sidebar -->
@@ -274,7 +272,22 @@
   <p>📧 Email: info@essencia.com</p>
 </div>
 
-<script>
+  <script src="frontend_api.js"></script>
+  <script>
+    async function loadCampaigns() {
+      try {
+        const kampanyalar = await essenciaApi.getKampanyalar();
+        const grid = document.querySelector('.kampanya-grid');
+        if (kampanyalar.length > 0 && grid) {
+          // Clear static ones if needed, or just append. 
+          // For now, let's keep it simple and just log or replace if specific logic exists.
+          console.log('Kampanyalar yüklendi:', kampanyalar);
+        }
+      } catch (error) {
+        console.error('Kampanyalar yüklenirken hata:', error);
+      }
+    }
+
     function toggleSidebar() {
       const sidebar = document.getElementById("contactSidebar");
       const overlay = document.getElementById("contactSidebarOverlay");
@@ -307,7 +320,10 @@
         window.location.href = 'index.html';
     }
 
-    document.addEventListener('DOMContentLoaded', checkLogin);
+    document.addEventListener('DOMContentLoaded', () => {
+      checkLogin();
+      loadCampaigns();
+    });
 </script>
 </body>
 </html>
