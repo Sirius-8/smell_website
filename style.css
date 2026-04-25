@@ -489,12 +489,7 @@ body {
   font-weight: 300;
 }
 
-.hero-ctas {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  flex-wrap: wrap;
-}
+
 
 .btn-primary {
   background: rgba(184, 201, 176, 0.28);
@@ -660,9 +655,7 @@ body {
     margin-right: auto;
   }
 
-  .hero-ctas {
-    justify-content: center;
-  }
+
 
   .hero-right {
     min-height: auto;

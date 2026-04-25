@@ -24,69 +24,6 @@ body {
     font-weight: 300;
 }
 
-/* ===================== NAVBAR ===================== */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 40px;
-    border-bottom: 0.5px solid #e0ddd8;
-    position: sticky;
-    top: 0;
-    background: rgba(250, 250, 248, 0.97);
-    backdrop-filter: blur(8px);
-    z-index: 100;
-}
-
-.nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 400;
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    color: #2a2a2a;
-    cursor: pointer;
-}
-
-.nav-gender {
-    display: flex;
-    gap: 6px;
-}
-
-.nav-btn {
-    padding: 7px 20px;
-    border-radius: 20px;
-    border: 0.5px solid #ccc;
-    background: transparent;
-    cursor: pointer;
-    font-family: 'Jost', sans-serif;
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: #555;
-    transition: all 0.25s;
-}
-
-.nav-btn:hover {
-    background: #f0ede8;
-    border-color: #aaa;
-}
-
-/* Kadın sayfasında "Kadın" butonu aktif görünsün */
-.nav-btn#btn-female,
-.nav-btn.fem-active {
-    background: #f9e8ec;
-    border-color: #d4a0b0;
-    color: #7a3a50;
-}
-
-.nav-btn#btn-male {
-    background: transparent;
-    border-color: #ccc;
-    color: #555;
-}
-
 /* ===================== COMMON SECTIONS ===================== */
 .divider {
     height: 0.5px;

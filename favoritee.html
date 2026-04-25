@@ -1,131 +1,100 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Essencia — Global Navbar & Favoriler</title>
-    <link rel="stylesheet" href="favorite.css">
-    <link rel="stylesheet" href="iletisim.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Essencia Favoriler</title>
+
+  <link rel="stylesheet" href="favorite.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-    <nav class="site-nav">
-  <div class="nav-brand">
-    <a href="#" class="nav-logo">E<span>SS</span>ENCIA</a>
-    <div class="nav-slogan">Kendini Keşfet</div>
-  </div>
+  <!-- NAVBAR -->
+  <nav class="main-navbar">
+    <div class="nav-container">
 
-  <ul class="nav-links">
-    <li><a href="index.html">Anasayfa</a></li>
+      <div class="nav-logo">
+        <a href="index.html">ESSENCIA</a>
+      </div>
 
-    <li class="nav-dropdown">
-      <a href="#" class="dropdown-toggle">Atölye ▾</a>
-      <ul class="dropdown-menu">
-        <li><a href="kadin.html">Kadın</a></li>
-        <li><a href="erkekparfum.html">Erkek</a></li>
+      <ul class="nav-links">
+        <li><a href="index.html">Anasayfa</a></li>
+
+        <li class="dropdown">
+          <button class="dropdown-trigger" type="button">Atölye ▾</button>
+          <ul class="dropdown-menu">
+            <li><a href="kadin.html">Kadın</a></li>
+            <li><a href="erkekparfum.html">Erkek</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#" id="triggerFav" class="nav-btn-link">Favorilerim</a></li>
+        <li><a href="iletisim.html">İletişim</a></li>
+        <li><a href="girisekranı.html" class="auth-btn">Giriş Yap</a></li>
+        <li><a href="sepet.html" class="nav-btn-link">Sepet</a></li>
       </ul>
-    </li>
 
-    <li><a href="#" id="triggerFav">Favorilerim</a></li>
-    <li><a href="#" onclick="toggleSidebar(); return false;">İletişim</a></li>
-  </ul>
-
-  <div class="nav-right">
-    <a href="girisekranı.html" class="nav-btn" style="text-decoration: none;">Kayıt Ol</a>
-    <button class="nav-cart" aria-label="Sepete Ekle" onclick="window.location.href='sepet.html'">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="9" cy="21" r="1"/>
-        <circle cx="20" cy="21" r="1"/>
-        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-      </svg>
-      <span class="nav-cart-label">Sepete Ekle</span>
-    </button>
-  </div>
-</nav>
-
-    <div id="fullScreenFav" class="fav-full-screen">
-        <button class="close-btn" id="closeFavBtn">&times;</button>
-        
-        <div class="fav-container">
-            <div class="fav-header-area">
-                <h2>FAVORİLERİM</h2>
-            </div>
-
-            <div class="fav-grid">
-                <div class="fav-item-card is-fem">
-                    <div class="fav-info">
-                        <h4>MIDNIGHT ROSE</h4>
-                        <p>KADIN KOLEKSİYONU · %50 GÜL, %50 AMBER</p>
-                    </div>
-                </div>
-
-                <div class="fav-item-card is-masc">
-                    <div class="fav-info">
-                        <h4>DEEP OCEAN</h4>
-                        <p>ERKEK KOLEKSİYONU · %70 DENİZ, %30 ODUNSU</p>
-                    </div>
-                </div>
-            </div>
-
-            <button class="checkout-all-btn">HEPSİNİ KOLEKSİYONA EKLE</button>
-        </div>
     </div>
+  </nav>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const openBtn = document.getElementById('triggerFav');
-            const closeBtn = document.getElementById('closeFavBtn');
-            const favOverlay = document.getElementById('fullScreenFav');
+  <!-- BOŞ ANA EKRAN -->
+  <main class="empty-page"></main>
 
-            if (openBtn) {
-                openBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    favOverlay.classList.add('is-active');
-                    document.body.style.overflow = 'hidden';
-                });
-            }
+  <!-- FAVORİLER EKRANI -->
+  <div class="fav-full-screen is-active" id="favScreen">
+    <button class="close-btn" id="closeFavBtn" type="button">&times;</button>
 
-            if (closeBtn) {
-                closeBtn.addEventListener('click', function() {
-                    favOverlay.classList.remove('is-active');
-                    document.body.style.overflow = 'auto';
-                });
-            }
+    <div class="fav-container">
+      <div class="fav-header-area">
+        <span>Essencia</span>
+        <h2>Favorilerim</h2>
+        <p>Favoriye eklediğiniz parfümler burada görünür.</p>
+      </div>
 
-            document.addEventListener('keydown', function(e) {
-                if (e.key === "Escape" && favOverlay.classList.contains('is-active')) {
-                    favOverlay.classList.remove('is-active');
-                    document.body.style.overflow = 'auto';
-                }
-            });
-        });
-    </script>
+      <div class="fav-grid" id="favGrid">
+        <div class="fav-item-card female-card">
+          <div class="fav-info">
+            <h4>Rose Velvet</h4>
+            <p>Gül · Şakayık · Misk</p>
+          </div>
+        </div>
 
-<!-- Contact Sidebar -->
-<div id="contactSidebarOverlay" class="contact-sidebar-overlay" onclick="toggleSidebar()"></div>
-<div id="contactSidebar" class="sidebar">
-  <span class="close-btn" onclick="toggleSidebar()">&times;</span>
-  <h3>İletişim</h3>
-  <p><i class="fa-solid fa-phone"></i> Telefon: +90 555 123 45 67</p>
-  <p>📧 Email: info@essencia.com</p>
-</div>
+        <div class="fav-item-card male-card">
+          <div class="fav-info">
+            <h4>Dark Oud</h4>
+            <p>Oud · Duman · Amber</p>
+          </div>
+        </div>
+      </div>
 
-<script>
-    function toggleSidebar() {
-      const sidebar = document.getElementById("contactSidebar");
-      const overlay = document.getElementById("contactSidebarOverlay");
-      if (sidebar.style.width === "350px") {
-        sidebar.style.width = "0";
-        overlay.classList.remove("active");
-      } else {
-        sidebar.style.width = "350px";
-        overlay.classList.add("active");
+      <button class="checkout-all-btn" type="button">Tümünü İncele</button>
+    </div>
+  </div>
+
+  <!-- JS EN ALTTA -->
+  <script>
+    const triggerFav = document.getElementById("triggerFav");
+    const closeFavBtn = document.getElementById("closeFavBtn");
+    const favScreen = document.getElementById("favScreen");
+
+    triggerFav.addEventListener("click", function(event) {
+      event.preventDefault();
+      favScreen.classList.add("is-active");
+    });
+
+    closeFavBtn.addEventListener("click", function() {
+      favScreen.classList.remove("is-active");
+    });
+
+    favScreen.addEventListener("click", function(event) {
+      if (event.target === favScreen) {
+        favScreen.classList.remove("is-active");
       }
-    }
-</script>
+    });
+  </script>
 
 </body>
 </html>
