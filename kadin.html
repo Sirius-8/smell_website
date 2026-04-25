@@ -298,8 +298,7 @@
 
         <section class="popular-section">
             <div class="section-label">Önerilen</div>
-            <h2 style="font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;margin-bottom:8px;">Kadın
-                Kokuları</h2>
+            <h2 style="font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;margin-bottom:8px;">Kadınlara Özel Parfümler</h2>
             <div class="popular-grid">
                 <div class="popular-card">
                     <canvas id="pop1-canvas"></canvas>
@@ -357,6 +356,23 @@
             const progressBar = document.getElementById(gender + '-bar');
             const fillText = document.getElementById(gender + '-fill-text');
             const warnText = document.getElementById(gender + '-warn');
+
+            // 100% sınırını koruma mantığı
+            let tempTotal = 0;
+            inputs.forEach(input => {
+                let val = parseInt(input.value) || 0;
+                if (val < 0) val = 0;
+                tempTotal += val;
+            });
+
+            if (tempTotal > 100) {
+                let activeInput = document.activeElement;
+                if (activeInput && activeInput.classList.contains('essence-input')) {
+                    let excess = tempTotal - 100;
+                    let currentVal = parseInt(activeInput.value) || 0;
+                    activeInput.value = currentVal - excess;
+                }
+            }
 
             let totalPercent = 0;
             let filledIngredients = [];
@@ -615,5 +631,28 @@
             animate();
         }
     </script>
+
+<!-- Contact Sidebar -->
+<div id="contactSidebarOverlay" class="contact-sidebar-overlay" onclick="toggleSidebar()"></div>
+<div id="contactSidebar" class="sidebar">
+  <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+  <h3>İletişim</h3>
+  <p><i class="fa-solid fa-phone"></i> Telefon: +90 555 123 45 67</p>
+  <p>📧 Email: info@essencia.com</p>
+</div>
+
+<script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById("contactSidebar");
+      const overlay = document.getElementById("contactSidebarOverlay");
+      if (sidebar.style.width === "350px") {
+        sidebar.style.width = "0";
+        overlay.classList.remove("active");
+      } else {
+        sidebar.style.width = "350px";
+        overlay.classList.add("active");
+      }
+    }
+</script>
 </body>
 </html>
