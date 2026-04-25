@@ -319,7 +319,7 @@
                     <div class="p-notes">Gül %40 · Yasemin %35 · Vanilya %25</div>
                     <div class="p-price-row">
                         <span class="p-price">2.990 TL</span>
-                        <button class="p-cart-btn"><i class="fa-solid fa-bag-shopping"></i></button>
+                        <button class="p-cart-btn" onclick="addToCart('Romantic Rose', 2990)"><i class="fa-solid fa-bag-shopping"></i></button>
                     </div>
                 </div>
                 <div class="popular-card">
@@ -330,7 +330,7 @@
                     <div class="p-notes">Bergamot %50 · Manolya %30 · Misk %20</div>
                     <div class="p-price-row">
                         <span class="p-price">3.400 TL</span>
-                        <button class="p-cart-btn"><i class="fa-solid fa-bag-shopping"></i></button>
+                        <button class="p-cart-btn" onclick="addToCart('Fresh Morning', 3400)"><i class="fa-solid fa-bag-shopping"></i></button>
                     </div>
                 </div>
                 <div class="popular-card">
@@ -341,7 +341,7 @@
                     <div class="p-notes">Lavanta %45 · Bergamot %35 · Misk %20</div>
                     <div class="p-price-row">
                         <span class="p-price">2.000 TL</span>
-                        <button class="p-cart-btn"><i class="fa-solid fa-bag-shopping"></i></button>
+                        <button class="p-cart-btn" onclick="addToCart('Lavender Dream', 2000)"><i class="fa-solid fa-bag-shopping"></i></button>
                     </div>
                 </div>
                 <div class="popular-card">
@@ -352,7 +352,7 @@
                     <div class="p-notes">Vanilya %50 · Gül %30 · Sandal %20</div>
                     <div class="p-price-row">
                         <span class="p-price">2.999 TL</span>
-                        <button class="p-cart-btn"><i class="fa-solid fa-bag-shopping"></i></button>
+                        <button class="p-cart-btn" onclick="addToCart('Sweet Vanilla', 2999)"><i class="fa-solid fa-bag-shopping"></i></button>
                     </div>
                 </div>
             </div>
@@ -687,6 +687,30 @@
 
     function toggleHeart(btn) {
       btn.classList.toggle('active');
+      const card = btn.closest('.popular-card');
+      const name = card.querySelector('.p-name').textContent;
+      const notes = card.querySelector('.p-notes').textContent;
+      
+      let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+      
+      if (btn.classList.contains('active')) {
+          if (!favorites.find(f => f.name === name)) {
+              favorites.push({ name, notes });
+              alert(name + ' favorilerinize eklendi!');
+          }
+      } else {
+          favorites = favorites.filter(item => item.name !== name);
+          alert(name + ' favorilerinizden çıkarıldı.');
+      }
+      
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+    }
+
+    function addToCart(name, price) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push({ name, price, quantity: 1 });
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(name + ' sepete eklendi!');
     }
 
     function checkLogin() {
