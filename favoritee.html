@@ -36,14 +36,14 @@
 
     <div class="nav-right">
       <a href="girisekranı.html" class="nav-btn" style="text-decoration: none;">Kayıt Ol</a>
-      <button class="nav-cart" aria-label="Sepete Ekle" onclick="window.location.href='sepet.html'">
+      <button class="nav-cart" aria-label="Sepet" onclick="window.location.href='sepet.html'">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="9" cy="21" r="1"/>
           <circle cx="20" cy="21" r="1"/>
           <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
         </svg>
-        <span class="nav-cart-label">Sepete Ekle</span>
+        <span class="nav-cart-label">Sepet</span>
       </button>
     </div>
   </nav>
@@ -57,28 +57,33 @@
 
     <div class="fav-container">
       <div class="fav-header-area">
-        <span>Essencia</span>
+        <span>ESSENCIA</span>
         <h2>Favorilerim</h2>
         <p>Favoriye eklediğiniz parfümler burada görünür.</p>
       </div>
 
-      <div class="fav-grid" id="favGrid">
-        <div class="fav-item-card female-card">
-          <div class="fav-info">
-            <h4>Rose Velvet</h4>
-            <p>Gül · Şakayık · Misk</p>
+      <div class="fav-grid-wrapper">
+        <div class="fav-grid" id="favGrid">
+          <div class="fav-item-card female-card">
+            <div class="fav-info">
+              <h4>Rose Velvet</h4>
+              <p>Gül · Şakayık · Misk</p>
+            </div>
+          </div>
+
+          <div class="fav-item-card male-card">
+            <div class="fav-info">
+              <h4>Dark Oud</h4>
+              <p>Oud · Duman · Amber</p>
+            </div>
           </div>
         </div>
 
-        <div class="fav-item-card male-card">
-          <div class="fav-info">
-            <h4>Dark Oud</h4>
-            <p>Oud · Duman · Amber</p>
-          </div>
+        <!-- DAHA FAZLA GÖR OVERLAY -->
+        <div class="fav-more-overlay" id="favMoreOverlay">
+          <button class="more-btn" type="button">Daha Fazla Gör</button>
         </div>
       </div>
-
-      <button class="checkout-all-btn" type="button">Tümünü İncele</button>
     </div>
   </div>
 
@@ -96,7 +101,6 @@
         }
       });
     }
-
     if (favScreen) {
       favScreen.addEventListener("click", function(event) {
         if (event.target === favScreen) {
@@ -107,6 +111,17 @@
           }
         }
       });
+    }
+
+    // Overlay kontrolü: Kart sayısı 2'den fazlaysa göster
+    const favGrid = document.getElementById("favGrid");
+    const favMoreOverlay = document.getElementById("favMoreOverlay");
+    if (favGrid && favMoreOverlay) {
+      if (favGrid.children.length > 2) {
+        favMoreOverlay.classList.add("is-visible");
+      } else {
+        favMoreOverlay.classList.remove("is-visible");
+      }
     }
   </script>
 

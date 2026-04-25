@@ -2,8 +2,17 @@ const totalPriceEl = document.querySelector(".total strong");
 
 function updateTotal() {
   let total = 0;
+  const items = document.querySelectorAll(".cart-item");
+  const cartItemsContainer = document.getElementById("cartItemsContainer");
+  const emptyCartMessage = document.getElementById("emptyCartMessage");
 
-  document.querySelectorAll(".cart-item").forEach(item => {
+  if (items.length === 0) {
+    if (cartItemsContainer) cartItemsContainer.style.display = "none";
+    if (emptyCartMessage) emptyCartMessage.style.display = "block";
+    return;
+  }
+
+  items.forEach(item => {
     const price = Number(item.dataset.price);
     const quantity = Number(item.querySelector(".quantity span").textContent);
 
@@ -43,32 +52,3 @@ document.querySelectorAll(".cart-item").forEach(item => {
 });
 
 updateTotal();
-
-function increaseQty(index) {
-  products[index].qty++;
-  renderCart();
-}
-
-function decreaseQty(index) {
-  if (products[index].qty > 1) {
-    products[index].qty--;
-  }
-  renderCart();
-}
-
-function removeItem(index) {
-  products.splice(index, 1);
-  renderCart();
-}
-
-function calculateTotal() {
-  let total = 0;
-
-  products.forEach(product => {
-    total += product.price * product.qty;
-  });
-
-  totalPrice.innerText = "₺" + total;
-}
-
-renderCart();

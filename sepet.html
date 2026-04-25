@@ -38,14 +38,14 @@
 
     <div class="nav-right">
       <a href="girisekranı.html" class="nav-btn" style="text-decoration: none;">Kayıt Ol</a>
-      <button class="nav-cart" aria-label="Sepete Ekle" onclick="window.location.href='sepet.html'">
+      <button class="nav-cart" aria-label="Sepet" onclick="window.location.href='sepet.html'">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="9" cy="21" r="1"/>
           <circle cx="20" cy="21" r="1"/>
           <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
         </svg>
-        <span class="nav-cart-label">Sepete Ekle</span>
+        <span class="nav-cart-label">Sepet</span>
       </button>
     </div>
   </nav>
@@ -55,50 +55,25 @@
     <div class="cart-card">
       <h1>Sepetim</h1>
 
-      <div class="cart-item" data-price="450">
-        <img src="pembeparfum.png" alt="Essencia Floral" class="product-img">
+      <div id="cartItemsContainer">
+        <!-- Bu alan dinamik olarak veritabanından gelen verilerle dolacaktır -->
+        
+        <div class="divider"></div>
 
-        <div class="product-info">
-          <h2>Essencia Floral</h2>
-          <p>Çiçeksi hafif koku</p>
-          <span class="price">₺450</span>
-
-          <div class="quantity">
-            <button class="minus-btn" type="button">-</button>
-            <span>1</span>
-            <button class="plus-btn" type="button">+</button>
-          </div>
+        <div class="total">
+          <span>Toplam</span>
+          <strong>₺0</strong>
         </div>
 
-        <button class="delete-btn" type="button">🗑</button>
+        <button class="buy-btn" type="button">Satın Al →</button>
       </div>
 
-      <div class="cart-item" data-price="620">
-        <img src="siyahparfum.png" alt="Essencia Night" class="product-img">
-
-        <div class="product-info">
-          <h2>Essencia Night</h2>
-          <p>Yoğun ve kalıcı</p>
-          <span class="price">₺620</span>
-
-          <div class="quantity">
-            <button class="minus-btn" type="button">-</button>
-            <span>2</span>
-            <button class="plus-btn" type="button">+</button>
-          </div>
-        </div>
-
-        <button class="delete-btn" type="button">🗑</button>
+      <!-- BOŞ SEPET MESAJI -->
+      <div id="emptyCartMessage" style="display: none; text-align: center; padding: 40px 0;">
+        <div style="font-size: 50px; margin-bottom: 20px;">🛒</div>
+        <p style="font-size: 18px; color: #777; margin-bottom: 30px;">Sepetiniz şu an boş.</p>
+        <a href="index.html" class="buy-btn" style="text-decoration: none; display: flex; justify-content: center; align-items: center; background: #70845f;">Alışverişe Başla</a>
       </div>
-
-      <div class="divider"></div>
-
-      <div class="total">
-        <span>Toplam</span>
-        <strong>₺1690</strong>
-      </div>
-
-      <button class="buy-btn" type="button">Satın Al →</button>
     </div>
   </div>
 
