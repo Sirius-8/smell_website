@@ -101,17 +101,6 @@
         }
       });
     }
-
-    // Overlay kontrolü: Kart sayısı 2'den fazlaysa göster
-    const favGrid = document.getElementById("favGrid");
-    const favMoreOverlay = document.getElementById("favMoreOverlay");
-    if (favGrid && favMoreOverlay) {
-      if (favGrid.children.length > 2) {
-        favMoreOverlay.classList.add("is-visible");
-      } else {
-        favMoreOverlay.classList.remove("is-visible");
-      }
-    }
   </script>
 
 </body>

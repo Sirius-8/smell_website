@@ -59,12 +59,12 @@ function renderFavorites() {
     }
 }
 
-function removeAndRefresh(name) {
+window.removeAndRefresh = function(name) {
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     favorites = favorites.filter(f => f.name !== name);
     localStorage.setItem('favorites', JSON.stringify(favorites));
     renderFavorites();
-}
+};
 
 // Global toggle for heart buttons
 window.toggleHeart = function(btn) {
@@ -89,7 +89,13 @@ window.toggleHeart = function(btn) {
 };
 
 // Initialize if on favoritee.html
-document.addEventListener('DOMContentLoaded', () => {
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFavorites);
+} else {
+    initFavorites();
+}
+
+function initFavorites() {
     if (document.getElementById('favGrid')) {
         renderFavorites();
     }
@@ -97,10 +103,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sync heart buttons state on page load
     const favorites = getFavorites();
     document.querySelectorAll('.popular-card').forEach(card => {
-        const name = card.querySelector('.p-name').textContent;
+        const nameEl = card.querySelector('.p-name');
+        if (!nameEl) return;
+        const name = nameEl.textContent;
         const btn = card.querySelector('.card-fav-btn');
         if (favorites.find(f => f.name === name)) {
             if (btn) btn.classList.add('active');
         }
     });
-});
+}
